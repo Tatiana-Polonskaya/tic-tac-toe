@@ -1,0 +1,14 @@
+.Cell {
+    &-block {
+        border-radius: 25px;
+        background: #FFF;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+}
