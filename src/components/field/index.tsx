@@ -2,78 +2,70 @@ import Cell from "../cell";
 import { cn } from "@bem-react/classname";
 import "./style.scss";
 import { useEffect, useState } from "react";
-import { TypeGame } from "../../consts/type-game";
-import { checkMapWinning, havingCountEmpty } from "../../consts/check-winner";
+import { havingWinner, havingCountEmpty } from "../../consts/check-winner";
 import { Labels } from "../../consts/labels";
+import { GameStatus } from "../../consts/game-status";
 
 type Props = {
+    cells: number[];
+    updateCells: (id: number) => boolean;
+    gameStatus: GameStatus;
+    changeGameStatus: (status: GameStatus) => void;
+    countRowCol: number;
     currentPlayer: number;
     changePlayer: () => void;
 };
 
 const CN = cn("Field");
 
-export default function Field({ currentPlayer, changePlayer }: Props) {
-    const currentType = TypeGame.Junior;
-    const [isEnd, setisEnd] = useState(false);
-    const [isStart, setisStart] = useState(true);
-
-    const [cells, setCells] = useState([
-        ...new Array(currentType * currentType).fill(0),
-    ]);
-
+export default function Field({
+    cells,
+    updateCells,
+    gameStatus,
+    changeGameStatus,
+    countRowCol,
+    currentPlayer,
+    changePlayer,
+}: Props) {
     const [error, setError] = useState<string>();
 
     const handleCellClick = (id: number) => {
-        if (isEnd) return;
-        if (isStart) setisStart(false);
-        const temp = [...cells];
-        if (temp[id] === Labels.Empty) {
-            temp[id] = currentPlayer + 1;
-            setCells(temp);
+        if (gameStatus === GameStatus.Win || gameStatus === GameStatus.Draw)
+            return;
+        if (gameStatus === GameStatus.Start) changeGameStatus(GameStatus.Game);
 
-            setError("");
-        } else {
-            setError("Эта ячейка уже занята, выберите другую!");
-        }
+        if (updateCells(id)) setError("");
+        else setError("Эта ячейка уже занята!");
     };
 
     useEffect(() => {
-        if (!isStart) {
-            const checking = checkMapWinning(
+        if (gameStatus !== GameStatus.Start) {
+            const checking = havingWinner(
                 currentPlayer + 1,
                 cells,
-                currentType
+                countRowCol
             );
             const checkEmpty = havingCountEmpty(Labels.Empty, cells);
 
             if (checking) {
-                setError(`Выиграл игрок № ${currentPlayer + 1} `);
-                setisEnd((prev) => !prev);
+                changeGameStatus(GameStatus.Win);
             } else if (!checkEmpty) {
-                setError(`Игра закончена ничьей!`);
-                setisEnd((prev) => !prev);
+                changeGameStatus(GameStatus.Draw);
             } else {
                 changePlayer();
             }
         }
     }, [cells]);
 
-    const handleButtonClick = () => {
-        setisEnd((prev) => !prev);
-        setCells([...new Array(currentType ** 2).fill(0)]);
-        changePlayer();
-        setError("");
-        setisStart(true);
-    };
+    useEffect(() => {
+        if (gameStatus === GameStatus.Start) setError("");
+    }, [gameStatus]);
 
     return (
         <>
-            <button onClick={handleButtonClick}>Заново</button>
             <div
                 className={CN("flex")}
-                style={{ gridTemplateColumns: `repeat(${currentType}, 1fr)` }}
-            >
+                style={{ gridTemplateColumns: `repeat(${countRowCol}, 1fr)` }}>
                 {cells.map((el, i) => (
                     <Cell
                         key={i}
@@ -82,7 +74,7 @@ export default function Field({ currentPlayer, changePlayer }: Props) {
                     />
                 ))}
             </div>
-            {error && <p>{error}</p>}
+            <p>{error}</p>
         </>
     );
 }

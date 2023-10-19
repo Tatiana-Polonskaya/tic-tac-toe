@@ -1,0 +1,18 @@
+.MenuContent {
+    &-logo {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+
+    }
+
+    &-table {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        gap: 20px;
+        padding: 20px 0 30px 0;
+
+        &-cell {}
+    }
+}

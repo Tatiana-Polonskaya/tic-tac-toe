@@ -26,11 +26,7 @@ export function checkLanes(symb: number, cells: number[], colCount: number) {
     return cols || rows;
 }
 
-export function checkMapWinning(
-    symb: number,
-    cells: number[],
-    colCount: number
-) {
+export function havingWinner(symb: number, cells: number[], colCount: number) {
     return (
         checkDiagonal(symb, cells, colCount) ||
         checkLanes(symb, cells, colCount)

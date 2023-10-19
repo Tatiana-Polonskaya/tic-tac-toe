@@ -1,0 +1,39 @@
+.ButtonRowGroup {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 25px;
+
+    &-button-red {
+        @extend %button-shared;
+
+        background: #F5ABAB;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            background: rgba(234, 78, 78);
+            transition: 1s;
+        }
+    }
+
+    &-button-blue {
+        @extend %button-shared;
+
+        background: #A79CEA;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            background: rgba(82, 60, 215);
+            transition: 1s;
+        }
+    }
+}
+
+%button-shared {
+    padding: 10px 90px;
+    border: none;
+    border-radius: 15px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+}
