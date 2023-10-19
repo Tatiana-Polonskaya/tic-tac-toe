@@ -4,11 +4,13 @@ import App from "./App.tsx";
 
 import { BrowserRouter } from "react-router-dom";
 
-import store from "./store/store.ts";
+
 import { Provider } from "react-redux";
 
 import "./fonts";
 import "./styles/index.scss";
+
+import { store } from "./store/store.ts";
 
 
 

@@ -5,15 +5,19 @@ import "./style.scss";
 import Button from "../../components/button";
 import ModalWindow from "../../components/modal-window";
 import { players } from "../../consts/players";
-import { TypeGame } from "../../consts/type-game";
+
 import { Labels } from "../../consts/labels";
 import { GameStatus } from "../../consts/game-status";
 import WinDrawMessage from "../../components/win-draw-message";
 import MenuContent from "../../components/menu-content";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const CN = cn("MainPage");
 
 export default function MainPage() {
+    const storeType = useSelector((state: RootState) => state.game.typeGame);
+
     /* ------------------------ PLAYER ------------------------ */
     const [indexPlayer, setIndexPlayer] = useState(0);
 
@@ -25,11 +29,13 @@ export default function MainPage() {
 
     /* ------------------------ CELLS ------------------------ */
 
-    const currentType = TypeGame.Junior;
+    const [cells, setCells] = useState<number[]>([]);
 
-    const [cells, setCells] = useState([
-        ...new Array(currentType * currentType).fill(0),
-    ]);
+    useEffect(() => {
+        if (cells.length !== storeType.mapSize ** 2) {
+            setCells([...new Array(storeType.mapSize ** 2).fill(0)]);
+        }
+    }, [storeType.mapSize]);
 
     const updateCells = (id: number) => {
         const temp = [...cells];
@@ -53,7 +59,7 @@ export default function MainPage() {
 
     const handleResetClick = () => {
         updateGameStatus(GameStatus.Start);
-        setCells([...new Array(currentType ** 2).fill(0)]);
+        setCells([...new Array(storeType.mapSize ** 2).fill(0)]);
         changePlayer();
     };
 
@@ -115,7 +121,7 @@ export default function MainPage() {
                     updateCells={updateCells}
                     gameStatus={gameStatus}
                     changeGameStatus={updateGameStatus}
-                    countRowCol={currentType}
+                    countRowCol={storeType.mapSize}
                     currentPlayer={indexPlayer}
                     changePlayer={changePlayer}
                 />
@@ -135,10 +141,7 @@ export default function MainPage() {
                 isVisible={isMenuModal}
                 onClose={handleCloseMenu}
                 closeOnClickOutside={true}>
-                <MenuContent
-                    onClickCancel={handleCloseMenu}
-                    onClickSave={handleCloseMenu}
-                />
+                <MenuContent onClickCancel={handleCloseMenu} />
             </ModalWindow>
         </div>
     );

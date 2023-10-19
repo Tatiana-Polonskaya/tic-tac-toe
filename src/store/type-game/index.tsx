@@ -1,9 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TypeGame } from "../../consts/type-game";
-import { Theme } from "../../consts/theme";
 
-const initialValue = {
-    typeGame: TypeGame.Junior,
+import { Theme } from "../../consts/theme";
+import { TypeGame } from "../../models/type-game";
+import { GAME_TYPES } from "../../consts/type-game";
+
+type InitialValue = {
+    typeGame: TypeGame;
+    countPlayer: number;
+    theme: Theme;
+};
+
+const initialValue: InitialValue = {
+    typeGame: GAME_TYPES[0],
     countPlayer: 2,
     theme: Theme.Light,
 };
@@ -25,6 +33,7 @@ export const gameSlice = createSlice({
 });
 
 // Функция действия генерируется на каждую функцию релюсера(reducer), определённую в createSlice
-export const { changeCountPlayers, changeTheme, changeTypeGame } = gameSlice.actions;
+export const { changeCountPlayers, changeTheme, changeTypeGame } =
+    gameSlice.actions;
 
 export default gameSlice.reducer;
