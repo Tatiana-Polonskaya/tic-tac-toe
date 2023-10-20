@@ -18,14 +18,15 @@ const CN = cn("MainPage");
 
 export default function MainPage() {
     const storeType = useSelector((state: RootState) => state.game.typeGame);
+    const storePlayers = useSelector(
+        (state: RootState) => state.game.countPlayer
+    );
 
     /* ------------------------ PLAYER ------------------------ */
     const [indexPlayer, setIndexPlayer] = useState(0);
 
     const changePlayer = () => {
-        setIndexPlayer(
-            indexPlayer === players.length - 1 ? 0 : indexPlayer + 1
-        );
+        setIndexPlayer(indexPlayer === storePlayers - 1 ? 0 : indexPlayer + 1);
     };
 
     /* ------------------------ CELLS ------------------------ */
@@ -42,7 +43,7 @@ export default function MainPage() {
         const temp = [...cells];
         let res = true;
         if (temp[id] === Labels.Empty) {
-            temp[id] = indexPlayer + 1;
+            temp[id] = players[indexPlayer].label;
             setCells(temp);
         } else {
             res = false;
