@@ -1,7 +1,7 @@
 import { IPlayer } from "../models/players";
 import { Labels } from "./labels";
 
-export const players: IPlayer[] = [
+export const PLAYERS: IPlayer[] = [
     {
         id: 0,
         label: Labels.Cross,
@@ -31,3 +31,5 @@ export const players: IPlayer[] = [
             "linear-gradient(0deg, #EADA4E 0%, rgba(234, 218, 78, 0.00) 100%)",
     },
 ];
+
+export const COUNT_PLAYERS = [2, 3, 4];

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Theme } from "../../consts/theme";
 import { TypeGame } from "../../models/type-game";
 import { GAME_TYPES } from "../../consts/type-game";
+import { COUNT_PLAYERS } from "../../consts/players";
 
 type InitialValue = {
     typeGame: TypeGame;
@@ -12,7 +13,7 @@ type InitialValue = {
 
 const initialValue: InitialValue = {
     typeGame: GAME_TYPES[0],
-    countPlayer: 2,
+    countPlayer: COUNT_PLAYERS[0],
     theme: Theme.Light,
 };
 

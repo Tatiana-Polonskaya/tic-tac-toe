@@ -4,7 +4,7 @@ import { cn } from "@bem-react/classname";
 import "./style.scss";
 import Button from "../../components/button";
 import ModalWindow from "../../components/modal-window";
-import { players } from "../../consts/players";
+import { PLAYERS } from "../../consts/players";
 
 import { Labels } from "../../consts/labels";
 import { GameStatus } from "../../consts/game-status";
@@ -12,7 +12,6 @@ import WinDrawMessage from "../../components/win-draw-message";
 import MenuContent from "../../components/menu-content";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import reopenSVG from "./reopen.svg";
 
 const CN = cn("MainPage");
 
@@ -43,7 +42,7 @@ export default function MainPage() {
         const temp = [...cells];
         let res = true;
         if (temp[id] === Labels.Empty) {
-            temp[id] = players[indexPlayer].label;
+            temp[id] = PLAYERS[indexPlayer].label;
             setCells(temp);
         } else {
             res = false;
@@ -97,17 +96,17 @@ export default function MainPage() {
         <div
             className={CN("column")}
             style={{
-                background: players[indexPlayer].backgroundColor,
+                background: PLAYERS[indexPlayer].backgroundColor,
             }}>
             <div className={CN("row")}>
                 <Button onClick={() => setIsMenuModal(true)}>
-                    <span style={{ color: players[indexPlayer].color }}>
+                    <span style={{ color: PLAYERS[indexPlayer].color }}>
                         Меню
                     </span>
                 </Button>
                 <Button onClick={handleResetClick}>
-                    <span style={{ color: players[indexPlayer].color }}>
-                        <img src={reopenSVG} />
+                    <span style={{ color: PLAYERS[indexPlayer].color }}>
+                        <img src={"/icon/reopen.svg"} />
                     </span>
                 </Button>
             </div>
@@ -115,7 +114,7 @@ export default function MainPage() {
             <div className={CN("grow")}>
                 <h1
                     className={CN("player-title")}
-                    style={{ color: players[indexPlayer].color }}>
+                    style={{ color: PLAYERS[indexPlayer].color }}>
                     {`Игрок ${indexPlayer + 1}`}
                 </h1>
                 <Field
