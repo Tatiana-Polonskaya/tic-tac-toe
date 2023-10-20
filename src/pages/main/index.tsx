@@ -25,7 +25,7 @@ export default function MainPage() {
     const [indexPlayer, setIndexPlayer] = useState(0);
 
     const changePlayer = () => {
-        setIndexPlayer(indexPlayer === storePlayers - 1 ? 0 : indexPlayer + 1);
+        setIndexPlayer(indexPlayer >= storePlayers - 1 ? 0 : indexPlayer + 1);
     };
 
     /* ------------------------ CELLS ------------------------ */
@@ -61,7 +61,7 @@ export default function MainPage() {
     const handleResetClick = () => {
         updateGameStatus(GameStatus.Start);
         setCells([...new Array(storeType.mapSize ** 2).fill(0)]);
-        changePlayer();
+        setIndexPlayer(0);
     };
 
     /* ------------------------ MODAL ------------------------ */
