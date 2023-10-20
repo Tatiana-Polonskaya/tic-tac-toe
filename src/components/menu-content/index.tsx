@@ -10,11 +10,12 @@ import { useState } from "react";
 
 type Props = {
     onClickCancel: () => void;
+    onSave: () => void;
 };
 
 const CN = cn("MenuContent");
 
-export default function MenuContent({ onClickCancel }: Props) {
+export default function MenuContent({ onClickCancel, onSave }: Props) {
     const storeGame = useSelector((state: RootState) => state.game.typeGame);
     const dispatch = useDispatch();
 
@@ -23,7 +24,9 @@ export default function MenuContent({ onClickCancel }: Props) {
 
     const handleClicksave = () => {
         dispatch(changeTypeGame(GAME_TYPES[currentIndexType]));
+
         onClickCancel();
+        onSave();
     };
 
     const buttons: ButtonContent[] = [
