@@ -4,7 +4,7 @@ import "./style.scss"
 
 type Props = {
     onClick: () => void;
-    styleClass: string;
+    styleClass?: string;
 };
 
 const CN = cn("Button");

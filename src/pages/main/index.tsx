@@ -12,6 +12,7 @@ import WinDrawMessage from "../../components/win-draw-message";
 import MenuContent from "../../components/menu-content";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import reopenSVG from "./reopen.svg";
 
 const CN = cn("MainPage");
 
@@ -98,14 +99,14 @@ export default function MainPage() {
                 background: players[indexPlayer].backgroundColor,
             }}>
             <div className={CN("row")}>
-                <Button onClick={() => setIsMenuModal(true)} styleClass="">
+                <Button onClick={() => setIsMenuModal(true)}>
                     <span style={{ color: players[indexPlayer].color }}>
                         Меню
                     </span>
                 </Button>
-                <Button onClick={handleResetClick} styleClass="">
+                <Button onClick={handleResetClick}>
                     <span style={{ color: players[indexPlayer].color }}>
-                        Заново
+                        <img src={reopenSVG} />
                     </span>
                 </Button>
             </div>
