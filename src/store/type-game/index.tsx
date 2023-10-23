@@ -33,7 +33,6 @@ export const gameSlice = createSlice({
     },
 });
 
-// Функция действия генерируется на каждую функцию релюсера(reducer), определённую в createSlice
 export const { changeCountPlayers, changeTheme, changeTypeGame } =
     gameSlice.actions;
 

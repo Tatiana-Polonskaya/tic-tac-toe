@@ -1,4 +1,4 @@
-export function checkDiagonal(symb: number, cells: number[], colCount: number) {
+export function checkDiagonals(symb: number, cells: number[], colCount: number) {
     let toright = true;
     let toleft = true;
 
@@ -28,11 +28,11 @@ export function checkLanes(symb: number, cells: number[], colCount: number) {
 
 export function havingWinner(symb: number, cells: number[], colCount: number) {
     return (
-        checkDiagonal(symb, cells, colCount) ||
+        checkDiagonals(symb, cells, colCount) ||
         checkLanes(symb, cells, colCount)
     );
 }
 
-export function havingCountEmpty(symb: number, cells: number[]) {
+export function havingEmptyCell(symb: number, cells: number[]) {
     return cells.filter((el) => el === symb).length > 0;
 }

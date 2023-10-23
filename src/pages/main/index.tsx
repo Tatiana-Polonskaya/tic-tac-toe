@@ -73,7 +73,14 @@ export default function MainPage() {
         setIsModal(false);
     };
 
+    // TODO: оптимизировать этот участок кода
+
     const handleCloseMenu = () => {
+        setIsMenuModal(false);
+    };
+
+    const handleSaveMenu = () => {
+        handleResetClick();
         setIsMenuModal(false);
     };
 
@@ -144,7 +151,7 @@ export default function MainPage() {
                 closeOnClickOutside={true}>
                 <MenuContent
                     onClickCancel={handleCloseMenu}
-                    onSave={handleResetClick}
+                    onSave={handleSaveMenu}
                 />
             </ModalWindow>
         </div>

@@ -2,7 +2,7 @@ import Cell from "../cell";
 import { cn } from "@bem-react/classname";
 import "./style.scss";
 import { useEffect, useState } from "react";
-import { havingWinner, havingCountEmpty } from "../../consts/check-winner";
+import { havingWinner, havingEmptyCell } from "../../consts/check-winner";
 import { Labels } from "../../consts/labels";
 import { GameStatus } from "../../consts/game-status";
 
@@ -45,7 +45,7 @@ export default function Field({
                 cells,
                 countRowCol
             );
-            const checkEmpty = havingCountEmpty(Labels.Empty, cells);
+            const checkEmpty = havingEmptyCell(Labels.Empty, cells);
 
             if (checking) {
                 changeGameStatus(GameStatus.Win);
