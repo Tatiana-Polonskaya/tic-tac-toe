@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { Theme } from "../../consts/theme";
+import { Theme, ThemeObject } from "../../consts/theme";
 import { TypeGame } from "../../models/type-game";
 import { GAME_TYPES } from "../../consts/type-game";
 import { COUNT_PLAYERS } from "../../consts/players";
@@ -8,13 +8,13 @@ import { COUNT_PLAYERS } from "../../consts/players";
 type InitialValue = {
     typeGame: TypeGame;
     countPlayer: number;
-    theme: Theme;
+    theme: ThemeObject;
 };
 
 const initialValue: InitialValue = {
     typeGame: GAME_TYPES[0],
     countPlayer: COUNT_PLAYERS[0],
-    theme: Theme.Light,
+    theme: Theme[0],
 };
 
 export const gameSlice = createSlice({

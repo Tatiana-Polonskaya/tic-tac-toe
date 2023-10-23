@@ -6,6 +6,7 @@ import circle from "./assets/circle.svg";
 import square from "./assets/rectangle.svg";
 import triangle from "./assets/triangle.svg";
 import { Labels } from "../../consts/labels";
+import { ReactSVG } from "react-svg";
 
 const CN = cn("Cell");
 
@@ -27,7 +28,10 @@ export default function Cell({ type, onClick }: Props) {
     return (
         <div className={CN("block")} onClick={onClick}>
             {type !== Labels.Empty && (
-                <img src={getImageByLabel(type)} className={CN("img")} />
+                <ReactSVG
+                    src={getImageByLabel(type)}
+                    className={CN("img", `color-player-${type - 1}`)}
+                />
             )}
         </div>
     );

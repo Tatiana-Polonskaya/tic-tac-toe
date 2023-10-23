@@ -1,0 +1,65 @@
+:root {
+    --background: #FFF;
+
+    --background-cell: #FFF;
+    --border-cell: #FFF;
+
+    --button-default: #FFF;
+    --button-red: #F5ABAB;
+    --button-red-hover: #EA4E4E;
+    --button-blue: #A79CEA;
+    --button-blue-hover: #523CD7;
+
+    --shadow: 7px 15px 13px -4px #00000056;
+    --button-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    --background-table-cell: rgba(253, 255, 173, 0.62);
+
+    --text-primary: #0f0f0f;
+    --text-secondary: #FFF;
+
+    --color-player-0: #C84141;
+    --background-player-0: linear-gradient(90deg, #EA4E4E 0%, rgba(234, 78, 78, 0.47) 46.88%, rgba(234, 78, 78, 0.00) 100%);
+
+    --color-player-1: #553FD7;
+    --background-player-1: linear-gradient(270deg, #553FD7 0.06%, rgba(82, 60, 215, 0.51) 49.48%, rgba(110, 88, 245, 0.00) 99.95%);
+
+    --color-player-2: #368E28;
+    --background-player-2: linear-gradient(180deg, #64EA4E 0%, rgba(100, 234, 78, 0.00) 100%);
+
+    --color-player-3: #EADA4E;
+    --background-player-3: linear-gradient(0deg, #EADA4E 0%, rgba(234, 218, 78, 0.00) 100%);
+}
+
+[data-theme="dark"] {
+    --background: rgba(0, 0, 0, 0.932);
+
+    --background-cell: rgba(19, 19, 19, 0.50);
+    --border-cell: #FFF;
+
+    --button-default: rgba(0, 0, 0, 0.50);
+    --button-red: #cc5858;
+    --button-red-hover: rgb(107, 39, 39);
+    --button-blue: #5C4CB9;
+    --button-blue-hover: #392f72;
+
+    --shadow: 7px 15px 13px -4px #00000056;
+    --button-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    --background-table-cell: #45b436;
+
+    --text-primary: #FFF;
+    --text-secondary: #FFF;
+
+    --color-player-0: #FF7979;
+    --background-player-0: linear-gradient(90deg, #9B2D2D 0.12%, #000 99.87%);
+
+    --color-player-1: #9483FF;
+    --background-player-1: linear-gradient(270deg, #614BE5 0.21%, #000 99.72%);
+
+    --color-player-2: #91FF7F;
+    --background-player-2: linear-gradient(180deg, #59A74D 0.25%, #000 99.74%);
+
+    --color-player-3: #FFF27B;
+    --background-player-3: linear-gradient(0deg, #C4B52F 0%, #000 100%);
+}

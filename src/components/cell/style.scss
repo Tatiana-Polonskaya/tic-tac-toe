@@ -1,7 +1,7 @@
 .Cell {
     &-block {
         border-radius: 25px;
-        background: #FFF;
+        background: var(--background-cell);
         width: 80px;
         height: 80px;
         overflow: hidden;
@@ -10,6 +10,19 @@
         align-content: center;
         align-items: center;
         cursor: pointer;
+    }
+
+    &-img {
+        height: 100%;
+        width: 100%;
+        padding: 10px;
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
     }
 
 }

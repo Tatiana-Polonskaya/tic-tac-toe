@@ -12,9 +12,15 @@
         justify-content: center;
         align-items: center;
         flex-grow: 1;
+
+        color: var(--text-primary);
         font-size: 32px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+    }
+
+    &-user {
+        padding: 5px;
     }
 }

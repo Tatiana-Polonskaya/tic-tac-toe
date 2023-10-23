@@ -13,6 +13,8 @@ import MenuContent from "../../components/menu-content";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
+import { ReactSVG } from "react-svg";
+
 const CN = cn("MainPage");
 
 export default function MainPage() {
@@ -100,28 +102,24 @@ export default function MainPage() {
     }, [gameStatus]);
 
     return (
-        <div
-            className={CN("column")}
-            style={{
-                background: PLAYERS[indexPlayer].backgroundColor,
-            }}>
+        <div className={CN("column", `background-player-${indexPlayer}`)}>
             <div className={CN("row")}>
                 <Button onClick={() => setIsMenuModal(true)}>
-                    <span style={{ color: PLAYERS[indexPlayer].color }}>
-                        Меню
-                    </span>
+                    <span className={`color-player-${indexPlayer}`}>Меню</span>
                 </Button>
                 <Button onClick={handleResetClick}>
-                    <span style={{ color: PLAYERS[indexPlayer].color }}>
-                        <img src={"/icon/reopen.svg"} />
+                    <span className={CN("icon", `color-player-${indexPlayer}`)}>
+                        <ReactSVG src={"/icon/reopen.svg"} />
                     </span>
                 </Button>
             </div>
 
             <div className={CN("grow")}>
                 <h1
-                    className={CN("player-title")}
-                    style={{ color: PLAYERS[indexPlayer].color }}>
+                    className={CN(
+                        "player-title",
+                        `color-player-${indexPlayer}`
+                    )}>
                     {`Игрок ${indexPlayer + 1}`}
                 </h1>
                 <Field

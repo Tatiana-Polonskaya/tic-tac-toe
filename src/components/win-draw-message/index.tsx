@@ -2,7 +2,6 @@ import ButtonRowGroup, { ButtonContent, TypeButton } from "../button-row-group";
 
 import { cn } from "@bem-react/classname";
 import "./style.scss";
-import { PLAYERS } from "../../consts/players";
 
 type Props = {
     isWin: boolean;
@@ -23,7 +22,7 @@ export default function WinDrawMessage({
     const messageWin = (
         <span>
             Победил
-            <span style={{ color: PLAYERS[indexPlayer].color, padding: "5px" }}>
+            <span className={CN("user", `color-player-${indexPlayer}`)}>
                 игрок №{indexPlayer + 1}
             </span>
             !

@@ -12,6 +12,9 @@ import {
     changeTheme,
     changeTypeGame,
 } from "../../store/type-game";
+import { Theme } from "../../consts/theme";
+import { useTheme } from "../../hook/useTheme";
+import { ReactSVG } from "react-svg";
 
 type Props = {
     onClickCancel: () => void;
@@ -43,6 +46,8 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
         theme: storeTheme,
     });
 
+    const [updateTheme] = useTheme();
+
     const handleChangeCountPlayers = (index: number) => {
         setMenuState({ ...menuState, countPlayers: COUNT_PLAYERS[index] });
     };
@@ -54,14 +59,15 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
         });
     };
 
-    const handleChangeTheme = (theme: number) => {
-        setMenuState({ ...menuState, theme: theme });
+    const handleChangeMenuTheme = (index: number) => {
+        setMenuState({ ...menuState, theme: Theme[index] });
     };
 
     const handleClicksave = () => {
         dispatch(changeTypeGame(menuState.complexity));
         dispatch(changeCountPlayers(menuState.countPlayers));
         dispatch(changeTheme(menuState.theme));
+        updateTheme(menuState.theme.mode);
 
         onSave();
     };
@@ -84,7 +90,7 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
     return (
         <div className={CN()}>
             <div className={CN("logo")}>
-                <img src="./logo.svg" alt="logo" className={CN("logo-img")} />
+                <ReactSVG src={"./logo.svg"} className={CN("logo-img")} />
             </div>
             <div className={CN("table")}>
                 <TableCell
@@ -101,9 +107,9 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
                 />
                 <TableCell
                     title={"Тема оформления:"}
-                    choices={["Классика", "Ночь", "Космос"]}
-                    initialNumber={storeTheme}
-                    onChangeValue={handleChangeTheme}
+                    choices={Theme.map((el) => el.title)}
+                    initialNumber={Theme.indexOf(storeTheme)}
+                    onChangeValue={handleChangeMenuTheme}
                 />
             </div>
             <ButtonRowGroup buttons={buttons} />

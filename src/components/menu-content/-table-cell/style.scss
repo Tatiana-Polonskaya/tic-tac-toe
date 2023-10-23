@@ -2,13 +2,12 @@
     &-cell {
         padding: 10px 0;
         border-radius: 10px;
-        // background-color: #F5F5F5;
         width: 100%;
         text-align: center;
+        color: var(--text-primary);
 
         &_border {
-            background-color: rgba(253, 255, 173, 0.62);
-
+            background-color: var(--background-table-cell);
         }
     }
 }
