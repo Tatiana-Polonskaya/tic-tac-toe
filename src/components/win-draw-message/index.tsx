@@ -29,7 +29,7 @@ export default function WinDrawMessage({
         </span>
     );
 
-    const background = isWin ? `url("/win-background.png")` : "";
+    const background = isWin ? `url("./win-background.png")` : "";
 
     const buttons: ButtonContent[] = [
         {

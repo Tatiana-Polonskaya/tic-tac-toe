@@ -7,15 +7,17 @@ import square from "./assets/rectangle.svg";
 import triangle from "./assets/triangle.svg";
 import { Labels } from "../../consts/labels";
 import { ReactSVG } from "react-svg";
+import { memo } from "react";
 
 const CN = cn("Cell");
 
 type Props = {
+    id: number;
     type: Labels;
-    onClick: () => void;
+    onClick: (id: number) => void;
 };
 
-export default function Cell({ type, onClick }: Props) {
+const MemoCell = memo(function Cell({ id, type, onClick }: Props) {
     const getImageByLabel = (type: Labels) =>
         type === Labels.Cross
             ? cross
@@ -26,7 +28,7 @@ export default function Cell({ type, onClick }: Props) {
             : triangle;
 
     return (
-        <div className={CN("block")} onClick={onClick}>
+        <div className={CN("block")} onClick={() => onClick(id)}>
             {type !== Labels.Empty && (
                 <ReactSVG
                     src={getImageByLabel(type)}
@@ -35,4 +37,6 @@ export default function Cell({ type, onClick }: Props) {
             )}
         </div>
     );
-}
+});
+
+export default MemoCell;

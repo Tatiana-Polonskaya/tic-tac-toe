@@ -109,7 +109,7 @@ export default function MainPage() {
                 </Button>
                 <Button onClick={handleResetClick}>
                     <span className={CN("icon", `color-player-${indexPlayer}`)}>
-                        <ReactSVG src={"/icon/reopen.svg"} />
+                        <ReactSVG src={"./icon/reopen.svg"} />
                     </span>
                 </Button>
             </div>

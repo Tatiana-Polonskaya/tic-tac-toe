@@ -1,4 +1,4 @@
-import Cell from "../cell";
+import MemoCell from "../cell";
 import { cn } from "@bem-react/classname";
 import "./style.scss";
 import { useEffect, useState } from "react";
@@ -67,9 +67,10 @@ export default function Field({
                 className={CN("flex")}
                 style={{ gridTemplateColumns: `repeat(${countRowCol}, 1fr)` }}>
                 {cells.map((el, i) => (
-                    <Cell
+                    <MemoCell
                         key={i}
-                        onClick={() => handleCellClick(i)}
+                        id={i}
+                        onClick={handleCellClick}
                         type={el}
                     />
                 ))}
