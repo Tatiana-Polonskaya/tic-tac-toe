@@ -10,6 +10,7 @@
         @extend %flex-container;
         flex-flow: column nowrap;
         height: 100%;
+        overflow: auto;
     }
 
     &-row {
@@ -42,4 +43,6 @@
             vertical-align: middle;
         }
     }
+
+
 }
