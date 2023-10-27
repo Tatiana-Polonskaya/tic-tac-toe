@@ -65,7 +65,10 @@ export default function Field({
         <>
             <div
                 className={CN("flex")}
-                style={{ gridTemplateColumns: `repeat(${countRowCol}, 1fr)` }}>
+                style={{
+                    gridTemplateColumns: `repeat(${countRowCol}, 1fr)`,
+                    gridTemplateRows: `repeat(${countRowCol}, 1fr`,
+                }}>
                 {cells.map((el, i) => (
                     <MemoCell
                         key={i}

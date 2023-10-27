@@ -1,7 +1,6 @@
 %flex-container {
     display: flex;
-    align-items: center;
-    align-content: center;
+    margin: 0 auto;
 }
 
 .MainPage {
@@ -26,6 +25,7 @@
         flex-flow: column nowrap;
         justify-content: center;
         gap: 25px;
+
     }
 
     &-player-title {
@@ -33,6 +33,7 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        text-align: center;
     }
 
     &-icon {
@@ -43,6 +44,14 @@
             vertical-align: middle;
         }
     }
+}
 
-
+@media (max-width: 400px) {
+    .MainPage {
+        &-grow {
+            gap: 0px;
+            width: 100%;
+            padding: 50px 0;
+        }
+    }
 }

@@ -6,13 +6,14 @@
     flex-flow: column nowrap;
     width: 600px;
     height: 300px;
+    background-size: 100% 100%;
 
     &-title {
         display: flex;
-        justify-content: center;
+
         align-items: center;
         flex-grow: 1;
-
+        text-align: center;
         color: var(--text-primary);
         font-size: 32px;
         font-style: normal;
@@ -22,5 +23,12 @@
 
     &-user {
         padding: 5px;
+    }
+}
+
+@media (max-width: 700px) {
+    .WinDrawMessage {
+        width: 100%;
+        background-size: 100% 100%;
     }
 }
