@@ -29,6 +29,7 @@
 @media (max-width: 700px) {
     .WinDrawMessage {
         width: 100%;
-        background-size: 100% 100%;
+        background-size: auto;
+        background-position: center;
     }
 }
