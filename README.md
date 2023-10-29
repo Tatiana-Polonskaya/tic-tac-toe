@@ -1,27 +1,66 @@
-# React + TypeScript + Vite
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Tatiana-Polonskaya/tic-tac-toe/assets/112598242/c1debc9e-d8e4-4f5d-bfd8-01c132e2a716">
+ <source media="(prefers-color-scheme: light)" srcset="https://github.com/Tatiana-Polonskaya/tic-tac-toe/assets/112598242/65c49beb-c9ae-4730-806e-9c1149155269">
+ <img alt="screen main page" src="https://github.com/Tatiana-Polonskaya/tic-tac-toe/assets/112598242/65c49beb-c9ae-4730-806e-9c1149155269">
+</picture>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Веб-игра Крестики-нолики на React+TS 
 
-Currently, two official plugins are available:
+**О проекте:**\
+  Игра со стандартными правилами базовой версии, расширенная количеством игроков и включающая выбор темы.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Функционал:**
+- Главная страница:
+  - Выбор клетки - игровое действие.
+  - Смена игрока и смена оформления согласно порядку игроков.
+  - Проверка выигрыша при клике на клетку, согласно правилам по диагонали и по линиям (вертикальным и горизонтальным).
+  - Объявление победы N-ого игрока или ничьей.
+- Меню:
+  - Смена количества игроков с 2 до 4.
+  - Смена сложности игры, которая увеличивает размер игрового поля.
+  - Смена темы интерфейса.
 
-## Expanding the ESLint configuration
+**Соответствие игровому полю и уровню сложности:**
+ - Легко: - 3x3
+ - Средне: - 4x4
+ - Сложно: - 5x5
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+*Количество игроков не влияет на уровень сложности.*
 
-- Configure the top-level `parserOptions` property like this:
+**Темы интерфейса:**
+ - Светлая.
+ - Темная.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+----
+## Содержание
+- [Запуск проекта](#запуск-проекта)
+- [Roadmap](#roadmap)
+- [Технологии](#технологии)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Запуск проекта
+
+- `npm install` - Установка зависимостей
+- `npm run dev` - Запуск проекта для разработки
+- `npm run build` - Сборка проекта
+
+
+## Roadmap
+
+- [x] Переместить цвета в переменные CSS.
+- [x] Добавить темную тему.
+- [x] Адаптировать для мобильных устройств.
+- [x] Опубликовать в открытый доступ GitHub Pages.
+- [ ] Добавить космическую тему.
+- [ ] Оптимизировать рендер компонентов. 
+- [ ] Добавить выбор фигур для игроков.
+- [ ] Добавить ввод имен для игроков.
+- [ ] Добавить stylelint.
+- [ ] Добавить husky и precommit.
+      
+## Технологии
+
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/blog/2023/03/16/introducing-react-dev)
+- [TypeScript](https://www.typescriptlang.org/)
+- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
+- [React Router DOM 6](https://reactrouter.com/en/main)
