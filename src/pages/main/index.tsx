@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Field from "../../components/field";
 import { cn } from "@bem-react/classname";
 import "./style.scss";
 import Button from "../../components/button";
 import ModalWindow from "../../components/modal-window";
-import { PLAYERS } from "../../consts/players";
 
-import { Labels } from "../../consts/labels";
 import { GameStatus } from "../../consts/game-status";
 import WinDrawMessage from "../../components/win-draw-message";
 import MenuContent from "../../components/menu-content";
@@ -14,11 +12,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
 import { ReactSVG } from "react-svg";
+import { PlayerContext } from "./context";
 
 const CN = cn("MainPage");
 
 export default function MainPage() {
-    const storeType = useSelector((state: RootState) => state.game.typeGame);
+
     const storePlayers = useSelector(
         (state: RootState) => state.game.countPlayer
     );
@@ -32,26 +31,6 @@ export default function MainPage() {
 
     /* ------------------------ CELLS ------------------------ */
 
-    const [cells, setCells] = useState<number[]>([]);
-
-    useEffect(() => {
-        if (cells.length !== storeType.mapSize ** 2) {
-            setCells([...new Array(storeType.mapSize ** 2).fill(0)]);
-        }
-    }, [storeType.mapSize]);
-
-    const updateCells = (id: number) => {
-        const temp = [...cells];
-        let res = true;
-        if (temp[id] === Labels.Empty) {
-            temp[id] = PLAYERS[indexPlayer].label;
-            setCells(temp);
-        } else {
-            res = false;
-        }
-        return res;
-    };
-
     /* ------------------------ STATUS ------------------------ */
 
     const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Start);
@@ -60,16 +39,17 @@ export default function MainPage() {
         setGameStatus(status);
     };
 
-    const handleResetClick = () => {
+    const handleResetClick = useCallback(() => {
         updateGameStatus(GameStatus.Start);
-        setCells([...new Array(storeType.mapSize ** 2).fill(0)]);
         setIndexPlayer(0);
-    };
+    }, []);
 
     /* ------------------------ MODAL ------------------------ */
 
     const [isModal, setIsModal] = useState(false);
     const [isMenuModal, setIsMenuModal] = useState(false);
+
+    const handleShowModal = () => setIsMenuModal(true);
 
     const handleClose = () => {
         setIsModal(false);
@@ -104,7 +84,7 @@ export default function MainPage() {
     return (
         <div className={CN("column", `background-player-${indexPlayer}`)}>
             <div className={CN("row")}>
-                <Button onClick={() => setIsMenuModal(true)}>
+                <Button onClick={handleShowModal}>
                     <span className={`color-player-${indexPlayer}`}>Меню</span>
                 </Button>
                 <Button onClick={handleResetClick}>
@@ -113,25 +93,22 @@ export default function MainPage() {
                     </span>
                 </Button>
             </div>
+            <PlayerContext.Provider value={{ indexPlayer, changePlayer }}>
+                <div className={CN("grow")}>
+                    <h1
+                        className={CN(
+                            "player-title",
+                            `color-player-${indexPlayer}`
+                        )}>
+                        {`Игрок ${indexPlayer + 1}`}
+                    </h1>
+                    <Field
+                        gameStatus={gameStatus}
+                        changeGameStatus={updateGameStatus}
+                    />
+                </div>
+            </PlayerContext.Provider>
 
-            <div className={CN("grow")}>
-                <h1
-                    className={CN(
-                        "player-title",
-                        `color-player-${indexPlayer}`
-                    )}>
-                    {`Игрок ${indexPlayer + 1}`}
-                </h1>
-                <Field
-                    cells={cells}
-                    updateCells={updateCells}
-                    gameStatus={gameStatus}
-                    changeGameStatus={updateGameStatus}
-                    countRowCol={storeType.mapSize}
-                    currentPlayer={indexPlayer}
-                    changePlayer={changePlayer}
-                />
-            </div>
             <ModalWindow
                 isVisible={isModal}
                 onClose={handleClose}

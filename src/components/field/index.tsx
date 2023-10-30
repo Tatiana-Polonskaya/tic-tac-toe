@@ -1,33 +1,50 @@
 import MemoCell from "../cell";
 import { cn } from "@bem-react/classname";
 import "./style.scss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { havingWinner, havingEmptyCell } from "../../consts/check-winner";
 import { Labels } from "../../consts/labels";
 import { GameStatus } from "../../consts/game-status";
+import { PlayerContext } from "../../pages/main/context";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { PLAYERS } from "../../consts/players";
 
 type Props = {
-    cells: number[];
-    updateCells: (id: number) => boolean;
     gameStatus: GameStatus;
     changeGameStatus: (status: GameStatus) => void;
-    countRowCol: number;
-    currentPlayer: number;
-    changePlayer: () => void;
 };
 
 const CN = cn("Field");
 
-export default function Field({
-    cells,
-    updateCells,
-    gameStatus,
-    changeGameStatus,
-    countRowCol,
-    currentPlayer,
-    changePlayer,
-}: Props) {
+export default function Field({ gameStatus, changeGameStatus }: Props) {
+    const storeType = useSelector((state: RootState) => state.game.typeGame);
+    const countRowCol = storeType.mapSize;
+
     const [error, setError] = useState<string>();
+
+    const { indexPlayer: currentPlayer, changePlayer } =
+        useContext(PlayerContext);
+
+    const [cells, setCells] = useState<number[]>([]);
+
+    useEffect(() => {
+        if (cells.length !== countRowCol ** 2) {
+            setCells([...new Array(countRowCol ** 2).fill(0)]);
+        }
+    }, [countRowCol]);
+
+    const updateCells = (id: number) => {
+        const temp = [...cells];
+        let res = true;
+        if (temp[id] === Labels.Empty) {
+            temp[id] = PLAYERS[currentPlayer].label;
+            setCells(temp);
+        } else {
+            res = false;
+        }
+        return res;
+    };
 
     const handleCellClick = (id: number) => {
         if (gameStatus === GameStatus.Win || gameStatus === GameStatus.Draw)
@@ -58,7 +75,10 @@ export default function Field({
     }, [cells]);
 
     useEffect(() => {
-        if (gameStatus === GameStatus.Start) setError("");
+        if (gameStatus === GameStatus.Start) {
+            setCells([...new Array(countRowCol ** 2).fill(0)]);
+            setError("");
+        }
     }, [gameStatus]);
 
     return (
