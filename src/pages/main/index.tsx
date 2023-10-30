@@ -29,8 +29,6 @@ export default function MainPage() {
         setIndexPlayer(indexPlayer >= storePlayers - 1 ? 0 : indexPlayer + 1);
     };
 
-    /* ------------------------ CELLS ------------------------ */
-
     /* ------------------------ STATUS ------------------------ */
 
     const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Start);

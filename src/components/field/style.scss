@@ -3,6 +3,15 @@
         display: grid;
         gap: 10px;
     }
+
+    &-error {
+        width: max-content;
+        word-wrap: break-word;
+        margin: 0 auto;
+        color: var(--text-primary);
+        height: max-content;
+        height: 20px;
+    }
 }
 
 @media (max-width: 700px) {

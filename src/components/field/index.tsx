@@ -18,10 +18,11 @@ type Props = {
 const CN = cn("Field");
 
 export default function Field({ gameStatus, changeGameStatus }: Props) {
-    const storeType = useSelector((state: RootState) => state.game.typeGame);
-    const countRowCol = storeType.mapSize;
+    const countRowCol = useSelector(
+        (state: RootState) => state.game.typeGame
+    ).mapSize;
 
-    const [error, setError] = useState<string>();
+    const [isError, setIsError] = useState(false);
 
     const { indexPlayer: currentPlayer, changePlayer } =
         useContext(PlayerContext);
@@ -51,8 +52,7 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
             return;
         if (gameStatus === GameStatus.Start) changeGameStatus(GameStatus.Game);
 
-        if (updateCells(id)) setError("");
-        else setError("Эта ячейка уже занята!");
+        setIsError(!updateCells(id));
     };
 
     useEffect(() => {
@@ -77,7 +77,7 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
     useEffect(() => {
         if (gameStatus === GameStatus.Start) {
             setCells([...new Array(countRowCol ** 2).fill(0)]);
-            setError("");
+            setIsError(false);
         }
     }, [gameStatus]);
 
@@ -98,7 +98,9 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
                     />
                 ))}
             </div>
-            <p>{error}</p>
+            <div className={CN("error")}>
+                {isError && "Эта ячейка уже занята!"}
+            </div>
         </>
     );
 }
