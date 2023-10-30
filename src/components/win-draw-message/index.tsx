@@ -1,7 +1,8 @@
-import ButtonRowGroup, { ButtonContent, TypeButton } from "../button-row-group";
+import ButtonRowGroup, { ButtonContent } from "../button-row-group";
 
 import { cn } from "@bem-react/classname";
 import "./style.scss";
+import { TypeButton } from "../../consts/type-button";
 
 type Props = {
     isWin: boolean;

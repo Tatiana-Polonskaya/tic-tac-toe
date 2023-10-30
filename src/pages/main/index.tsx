@@ -17,7 +17,6 @@ import { PlayerContext } from "./context";
 const CN = cn("MainPage");
 
 export default function MainPage() {
-
     const storePlayers = useSelector(
         (state: RootState) => state.game.countPlayer
     );
@@ -47,21 +46,19 @@ export default function MainPage() {
     const [isModal, setIsModal] = useState(false);
     const [isMenuModal, setIsMenuModal] = useState(false);
 
-    const handleShowModal = () => setIsMenuModal(true);
+    const handleShowMenuModal = () => setIsMenuModal(true);
 
     const handleClose = () => {
         setIsModal(false);
     };
-
-    // TODO: оптимизировать этот участок кода
-
+    
     const handleCloseMenu = () => {
         setIsMenuModal(false);
     };
 
     const handleSaveMenu = () => {
         handleResetClick();
-        setIsMenuModal(false);
+        handleCloseMenu();
     };
 
     const handleModalReset = () => {
@@ -71,7 +68,7 @@ export default function MainPage() {
 
     const handleModalToMenu = () => {
         handleClose();
-        setIsMenuModal(true);
+        handleShowMenuModal();
     };
 
     useEffect(() => {
@@ -82,7 +79,7 @@ export default function MainPage() {
     return (
         <div className={CN("column", `background-player-${indexPlayer}`)}>
             <div className={CN("row")}>
-                <Button onClick={handleShowModal}>
+                <Button onClick={handleShowMenuModal}>
                     <span className={`color-player-${indexPlayer}`}>Меню</span>
                 </Button>
                 <Button onClick={handleResetClick}>
@@ -91,6 +88,7 @@ export default function MainPage() {
                     </span>
                 </Button>
             </div>
+
             <PlayerContext.Provider value={{ indexPlayer, changePlayer }}>
                 <div className={CN("grow")}>
                     <h1

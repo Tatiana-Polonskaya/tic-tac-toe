@@ -1,6 +1,6 @@
 import { cn } from "@bem-react/classname";
 import "./style.scss";
-import ButtonRowGroup, { ButtonContent, TypeButton } from "../button-row-group";
+import ButtonRowGroup, { ButtonContent } from "../button-row-group";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { GAME_TYPES } from "../../consts/type-game";
@@ -15,6 +15,7 @@ import {
 import { Theme } from "../../consts/theme";
 import { useTheme } from "../../hook/useTheme";
 import { ReactSVG } from "react-svg";
+import { TypeButton } from "../../consts/type-button";
 
 type Props = {
     onClickCancel: () => void;
@@ -25,6 +26,7 @@ const CN = cn("MenuContent");
 
 export default function MenuContent({ onClickCancel, onSave }: Props) {
     const dispatch = useDispatch();
+        const [updateTheme] = useTheme();
 
     /* ----------------------- COMPLEXITY GAME ----------------------- */
     const storeGame = useSelector((state: RootState) => state.game.typeGame);
@@ -45,8 +47,6 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
         complexity: storeGame,
         theme: storeTheme,
     });
-
-    const [updateTheme] = useTheme();
 
     const handleChangeCountPlayers = (index: number) => {
         setMenuState({ ...menuState, countPlayers: COUNT_PLAYERS[index] });

@@ -2,11 +2,7 @@ import Button from "../button";
 
 import { cn } from "@bem-react/classname";
 import "./style.scss";
-
-export enum TypeButton {
-    Red,
-    Blue,
-}
+import { TypeButton } from "../../consts/type-button";
 
 export type ButtonContent = {
     id: number;
@@ -22,10 +18,6 @@ type Props = {
 const CN = cn("ButtonRowGroup");
 
 export default function ButtonRowGroup({ buttons }: Props) {
-    const checkStyle = (style: TypeButton) => {
-        if (style === TypeButton.Red) return CN("button-red");
-        else return CN("button-blue");
-    };
 
     return (
         <div className={CN()}>
@@ -33,7 +25,7 @@ export default function ButtonRowGroup({ buttons }: Props) {
                 <Button
                     key={el.id}
                     onClick={el.onClick}
-                    styleClass={checkStyle(el.typeButton)}>
+                    styleClass={CN(el.typeButton)}>
                     {el.title}
                 </Button>
             ))}
