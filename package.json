@@ -12,6 +12,11 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist"
     },
+    "lint-staged": {
+        "*.ts": "npx tsc --noEmit",
+        "*.{js,jsx,ts,tsx}": "npx eslint",
+        "*.{js,jsx,ts,tsx,html,css}": "npx prettier --check"
+    },
     "dependencies": {
         "@bem-react/classname": "^1.6.0",
         "@reduxjs/toolkit": "^1.9.7",
@@ -34,6 +39,8 @@
         "eslint": "^8.45.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.3",
+        "husky": "^8.0.3",
+        "lint-staged": "^15.0.2",
         "sass": "^1.69.4",
         "typescript": "^5.0.2",
         "vite": "^4.4.5"
