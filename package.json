@@ -10,7 +10,9 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist"
+        "deploy": "gh-pages -d dist",
+        "lint:css": "stylelint src",
+        "lint:css:fix": "npm run lint:css -- --fix"
     },
     "lint-staged": {
         "*.ts": "npx tsc --noEmit",
@@ -42,6 +44,11 @@
         "husky": "^8.0.3",
         "lint-staged": "^15.0.2",
         "sass": "^1.69.4",
+        "stylelint": "^15.11.0",
+        "stylelint-config-clean-order": "^5.2.0",
+        "stylelint-config-prettier": "^9.0.5",
+        "stylelint-config-standard": "^34.0.0",
+        "stylelint-config-standard-scss": "^11.0.0",
         "typescript": "^5.0.2",
         "vite": "^4.4.5"
     }

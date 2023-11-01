@@ -1,10 +1,12 @@
 .TableCell {
     &-cell {
-        padding: 10px 0;
-        border-radius: 10px;
         width: 100%;
-        text-align: center;
+        padding: 10px 0;
+
         color: var(--text-primary);
+        text-align: center;
+
+        border-radius: 10px;
 
         &_border {
             background-color: var(--background-table-cell);

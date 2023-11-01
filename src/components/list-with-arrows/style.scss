@@ -1,6 +1,6 @@
 %arrow {
-    height: 20px;
     width: 20px;
+    height: 20px;
     background-color: white;
     border-radius: 15px;
 
@@ -11,50 +11,51 @@
 
 .ListWithArrows {
     &-slider {
-        overflow: hidden;
         position: relative;
+        overflow: hidden;
 
         &-list {
             display: flex;
+            width: 100%;
             height: 100%;
             transition: transform 0.5s ease-in-out;
-            width: 100%;
         }
 
         &-slide {
-            flex: 1 0 100%;
-            text-align: center;
             position: relative;
+            flex: 1 0 100%;
             font-size: 20px;
+            text-align: center;
         }
     }
 
     &-arrows {
-        display: flex;
-        font-size: 20px;
-        justify-content: space-between;
-        height: 100%;
         position: absolute;
-        width: 100%;
         z-index: 1;
+
+        display: flex;
+        justify-content: space-between;
+
+        width: 100%;
+        height: 100%;
+
+        font-size: 20px;
 
         &-arrow {
             &-left {
                 @extend %arrow;
-
+                transform: rotate(90deg);
                 background-image: url("./arrow.png");
                 background-repeat: no-repeat;
                 background-size: contain;
-                transform: rotate(90deg);
             }
 
             &-right {
                 @extend %arrow;
-
+                transform: rotate(-90deg);
                 background-image: url("./arrow.png");
                 background-repeat: no-repeat;
                 background-size: contain;
-                transform: rotate(-90deg);
             }
         }
     }

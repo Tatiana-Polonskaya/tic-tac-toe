@@ -1,24 +1,25 @@
 .WinDrawMessage {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
     flex-flow: column nowrap;
+    place-content: center center;
+    align-items: center;
+
     width: 600px;
     height: 300px;
+
     background-size: 100% 100%;
 
     &-title {
         display: flex;
-
-        align-items: center;
         flex-grow: 1;
-        text-align: center;
-        color: var(--text-primary);
+        align-items: center;
+
         font-size: 32px;
-        font-style: normal;
         font-weight: 400;
+        font-style: normal;
         line-height: normal;
+        color: var(--text-primary);
+        text-align: center;
     }
 
     &-user {
@@ -26,10 +27,10 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (width <= 700px) {
     .WinDrawMessage {
         width: 100%;
-        background-size: auto;
         background-position: center;
+        background-size: auto;
     }
 }

@@ -1,0 +1,7 @@
+{
+    // Использование локальных правил Stylelint
+    "stylelint.useLocal": true,
+
+    // Форматирование при сохранении файла
+    "stylelint.autoFixOnSave": true
+}

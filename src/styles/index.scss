@@ -1,6 +1,6 @@
-@import "./_reset.scss";
-@import "./var.scss";
-@import "./colors-player.scss";
+@import "./reset";
+@import "./var";
+@import "./colors-player";
 
 input,
 button,
@@ -10,16 +10,15 @@ select {
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
+    min-width: 250px;
     font-family: "Russo One", Helvetica, sans-serif !important;
     font-size: 20px;
-
-    min-width: 250px;
 }
 
 html,

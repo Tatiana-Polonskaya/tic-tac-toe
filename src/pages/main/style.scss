@@ -4,41 +4,40 @@
 }
 
 .MainPage {
-
     &-column {
         @extend %flex-container;
+        overflow: auto;
         flex-flow: column nowrap;
         height: 100%;
-        overflow: auto;
     }
 
     &-row {
         @extend %flex-container;
         flex-flow: row nowrap;
-        padding: 20px;
-        gap: 15px
+        gap: 15px;
+        padding: 20px
     }
 
     &-grow {
-        flex-grow: 1;
         @extend %flex-container;
         flex-flow: column nowrap;
-        justify-content: center;
+        flex-grow: 1;
         gap: 25px;
+        justify-content: center;
 
     }
 
     &-player-title {
         font-size: 32px;
-        font-style: normal;
         font-weight: 400;
+        font-style: normal;
         line-height: normal;
         text-align: center;
     }
 
     &-icon {
-        height: 20px;
         width: 20px;
+        height: 20px;
 
         svg {
             vertical-align: middle;
@@ -46,10 +45,10 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (width <= 400px) {
     .MainPage {
         &-grow {
-            gap: 0px;
+            gap: 0;
             width: 100%;
             padding: 50px 0;
         }

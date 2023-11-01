@@ -1,0 +1,9 @@
+*.tsx
+*.jsx
+*.ts
+*.js
+*.md
+*.svg
+*.ttf
+*.png
+/node_modules

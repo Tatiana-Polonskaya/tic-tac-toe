@@ -1,8 +1,8 @@
 .ButtonRowGroup {
     display: flex;
     flex-flow: row nowrap;
-    width: 100%;
     gap: 25px;
+    width: 100%;
 
     &-button-red {
         @extend %button-shared;
@@ -30,13 +30,16 @@
 }
 
 %button-shared {
+    flex-grow: 1;
+
     width: 100%;
-    border: none;
-    border-radius: 15px;
-    color: var(--text-secondary);
+
     font-size: 20px;
     font-weight: 400;
     line-height: normal;
-    flex-grow: 1;
+    color: var(--text-secondary);
     text-align: center;
+
+    border: none;
+    border-radius: 15px;
 }

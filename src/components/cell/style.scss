@@ -1,47 +1,47 @@
 .Cell {
     &-block {
-        border-radius: 25px;
-        background: var(--background-cell);
-        width: 80px;
-        height: 80px;
+        cursor: pointer;
+
         overflow: hidden;
         display: flex;
-        justify-content: center;
-        align-content: center;
+        place-content: center center;
         align-items: center;
-        cursor: pointer;
+
+        width: 80px;
+        height: 80px;
+
+        background: var(--background-cell);
+        border-radius: 25px;
     }
 
     &-img {
         width: 100%;
-        padding: 13px 10px 10px 10px;
+        padding: 13px 10px 10px;
 
         div {
             display: flex;
-            justify-content: center;
-            align-content: center;
+            place-content: center center;
             align-items: center;
         }
     }
 }
 
-@media (max-width: 700px) {
+@media (width <= 700px) {
     .Cell {
         &-block {
-            border: 1px solid var(--border-cell);
-
             width: 70px;
             height: 70px;
+            border: 1px solid var(--border-cell);
             border-radius: 20px;
         }
 
         &-img {
-            padding: 8px 5px 5px 5px;
+            padding: 8px 5px 5px;
         }
     }
 }
 
-@media (max-width: 400px) {
+@media (width <= 400px) {
     .Cell {
         &-block {
             width: 100%;
@@ -50,8 +50,8 @@
 
         &-img {
             svg {
-                height: inherit;
                 width: inherit;
+                height: inherit;
             }
         }
     }

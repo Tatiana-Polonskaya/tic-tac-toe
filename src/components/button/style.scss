@@ -1,8 +1,11 @@
 .Button {
-    border-radius: 25px;
-    background: var(--button-default);
-    box-shadow: var(--button-shadow);
-    padding: 10px 15px;
-    font-size: 20px;
     cursor: pointer;
+
+    padding: 10px 15px;
+
+    font-size: 20px;
+
+    background: var(--button-default);
+    border-radius: 25px;
+    box-shadow: var(--button-shadow);
 }
