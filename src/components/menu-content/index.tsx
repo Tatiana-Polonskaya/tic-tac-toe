@@ -26,7 +26,7 @@ const CN = cn("MenuContent");
 
 export default function MenuContent({ onClickCancel, onSave }: Props) {
     const dispatch = useDispatch();
-        const [updateTheme] = useTheme();
+    const [updateTheme] = useTheme();
 
     /* ----------------------- COMPLEXITY GAME ----------------------- */
     const storeGame = useSelector((state: RootState) => state.game.typeGame);

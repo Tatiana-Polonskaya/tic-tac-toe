@@ -1,0 +1,25 @@
+.Setting {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+
+    &-btn {
+        display: flex;
+        flex-flow: row nowrap;
+
+        justify-content: space-between;
+        align-items: center;
+        background: var(--background);
+        border: 1 solid var(--border-cell);
+        color: var(--text-primary);
+        border-radius: 15px;
+    }
+
+
+    &-arrow {
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

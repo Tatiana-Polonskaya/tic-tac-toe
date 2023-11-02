@@ -13,6 +13,7 @@ import { RootState } from "../../store/store";
 
 import { ReactSVG } from "react-svg";
 import { PlayerContext } from "./context";
+import Setting from "../../components/setting";
 
 const CN = cn("MainPage");
 
@@ -51,7 +52,7 @@ export default function MainPage() {
     const handleClose = () => {
         setIsModal(false);
     };
-    
+
     const handleCloseMenu = () => {
         setIsMenuModal(false);
     };
@@ -120,6 +121,7 @@ export default function MainPage() {
                 isVisible={isMenuModal}
                 onClose={handleCloseMenu}
                 closeOnClickOutside={true}>
+                <Setting />
                 <MenuContent
                     onClickCancel={handleCloseMenu}
                     onSave={handleSaveMenu}

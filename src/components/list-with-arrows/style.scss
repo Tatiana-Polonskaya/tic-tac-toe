@@ -45,7 +45,7 @@
             &-left {
                 @extend %arrow;
                 transform: rotate(90deg);
-                background-image: url("./arrow.png");
+                background-image: url("/icon/arrow.png");
                 background-repeat: no-repeat;
                 background-size: contain;
             }
@@ -53,7 +53,7 @@
             &-right {
                 @extend %arrow;
                 transform: rotate(-90deg);
-                background-image: url("./arrow.png");
+                background-image: url("/icon/arrow.png");
                 background-repeat: no-repeat;
                 background-size: contain;
             }

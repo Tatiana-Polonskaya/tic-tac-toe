@@ -1,0 +1,40 @@
+.ProxyButton {
+    &-button-red {
+        @extend %button-shared;
+
+        background: var(--button-red);
+        box-shadow: var(--button-shadow);
+
+        &:hover {
+            background: var(--button-red-hover);
+            transition: 1s;
+        }
+    }
+
+    &-button-blue {
+        @extend %button-shared;
+
+        background: var(--button-blue);
+        box-shadow: var(--button-shadow);
+
+        &:hover {
+            background: var(--button-blue-hover);
+            transition: 1s;
+        }
+    }
+}
+
+%button-shared {
+    flex-grow: 1;
+
+    width: 100%;
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-secondary);
+    text-align: center;
+
+    border: none;
+    border-radius: 15px;
+}
