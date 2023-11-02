@@ -9,7 +9,8 @@ type Props = {
     initialNumber: number;
     title: string;
     choices: string[];
-    onChangeValue: (value: number, initialNumber: number) => void;
+    onChangeValue: (value: number, indexPlayer?: number) => void;
+    indexPlayer?: number;
 };
 
 const CN = cn("TableCell");
@@ -19,13 +20,16 @@ export default function TableCell({
     choices,
     initialNumber,
     onChangeValue,
+    indexPlayer,
 }: Props) {
     const [currentValue, setCurrentValue] = useState(initialNumber);
 
     const handleChangeValue = (value: number) => {
         setCurrentValue(value);
-        if (value !== initialNumber) {
-            onChangeValue(value, initialNumber);
+        if (indexPlayer !== undefined) {
+            onChangeValue(value, indexPlayer);
+        } else if (value !== initialNumber) {
+            onChangeValue(value);
         }
     };
 

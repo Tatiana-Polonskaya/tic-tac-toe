@@ -29,12 +29,17 @@ export default function ShapesSetting() {
 
     const [players, setPlayers] = useState(storePlayer);
 
-    const changeLabel = (indexShape: number, indexPlayer: number) => {
-        const tempArr = [...players];
-        const temp = { ...tempArr[indexPlayer] };
-        temp.label = SHAPES[indexShape];
-        tempArr[indexPlayer] = temp;
-        setPlayers(tempArr);
+    const changeLabel = (indexShape: number, indexPlayer?: number) => {
+
+        if (indexPlayer !== undefined) {
+            console.log("indexShape", indexShape, SHAPES[indexShape]);
+            console.log("indexPlayer", indexPlayer);
+            const tempArr = [...players];
+            const temp = { ...tempArr[indexPlayer] };
+            temp.label = SHAPES[indexShape];
+            tempArr[indexPlayer] = temp;
+            setPlayers(tempArr);
+        }
     };
 
     /** --------------------------- BUTTON --------------------------- */
@@ -66,8 +71,9 @@ export default function ShapesSetting() {
                         key={player.id}
                         title={`Игрок ${player.id + 1}:`}
                         choices={SHAPES.map((el) => el.title)}
-                        initialNumber={player.id}
+                        initialNumber={player.label.id}
                         onChangeValue={changeLabel}
+                        indexPlayer={player.id}
                     />
                 ))}
             </div>
