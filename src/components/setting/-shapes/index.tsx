@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { cn } from "@bem-react/classname";
 
 import { RootState } from "../../../store/store";
-import { TypeButton } from "../../../consts/type-button";
+import { changePlayers } from "../../../store/player";
 
-import { MenuContext } from "../context";
-import TableCell from "../../menu-content/-table-cell";
-import ButtonRowGroup, { ButtonContent } from "../../button-row-group";
+import { TypeButton } from "../../../consts/type-button";
 import { SHAPES } from "../../../consts/labels";
 
+import { MenuContext } from "../context";
+
+import TableCell from "../../menu-content/-table-cell";
+import ButtonRowGroup, { ButtonContent } from "../../button-row-group";
+
 import "./style.scss";
-import { changePlayers } from "../../../store/player";
 
 const CN = cn("ShapesSetting");
 
@@ -28,10 +30,7 @@ export default function ShapesSetting() {
     const [players, setPlayers] = useState(storePlayer);
 
     const changeLabel = (indexShape: number, indexPlayer: number) => {
-        console.log("player id: ", indexPlayer, "change: ", SHAPES[indexShape]);
-
         const tempArr = [...players];
-
         const temp = { ...tempArr[indexPlayer] };
         temp.label = SHAPES[indexShape];
         tempArr[indexPlayer] = temp;
@@ -43,6 +42,7 @@ export default function ShapesSetting() {
         dispatch(changePlayers(players));
         onSave();
     };
+
     const buttons: ButtonContent[] = [
         {
             id: 0,

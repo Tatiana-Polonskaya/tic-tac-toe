@@ -6,12 +6,13 @@
     &-btn {
         display: flex;
         flex-flow: row nowrap;
-
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
+
+        color: var(--text-primary);
+
         background: var(--background);
         border: 1px solid var(--border-cell);
-        color: var(--text-primary);
         border-radius: 15px;
     }
 
