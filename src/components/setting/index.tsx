@@ -1,29 +1,66 @@
-import { cn } from "@bem-react/classname";
-import { ReactSVG } from "react-svg";
+import { useState } from "react";
+import DefaultSetting from "./-default";
+import MenuContent from "../menu-content";
+import { MenuContext } from "./context";
+import ShapesSetting from "./-shapes";
+import MenuLayout from "../../layout/menu";
 
-import Button from "../button";
-import { RedButton } from "../proxy-button";
-
-import "./style.scss";
-
-const CN = cn("Setting");
+enum LevelMenu {
+    Default = 0,
+    GameSetting = 1,
+    EditShapes = 2,
+}
 
 export default function Setting() {
+    const [step, setStep] = useState(LevelMenu.Default);
+
+    const changeLevelToGameSetting = () => {
+        setStep(LevelMenu.GameSetting);
+    };
+
+    const changeLevelToEditShapes = () => {
+        setStep(LevelMenu.EditShapes);
+    };
+
+    const handleClickCancel = () => {
+        setStep(LevelMenu.Default);
+    };
+
+    const handleClickSave = () => {
+        setStep(LevelMenu.Default);
+    };
+
+    const ItemsMenu = [
+        {
+            id: 0,
+            title: "Настройки игры",
+            onClick: changeLevelToGameSetting,
+        },
+        {
+            id: 1,
+            title: "Изменить фигуры",
+            onClick: changeLevelToEditShapes,
+        },
+    ];
+
     return (
-        <div className={CN()}>
-            <Button
-                styleClass={CN("btn")}
-                onClick={() => console.log("click 1")}>
-                <p className={CN("text")}>Настройки игры</p>
-                <ReactSVG src="icon/arrow.svg" className={CN("arrow")} />
-            </Button>
-            <Button
-                styleClass={CN("btn")}
-                onClick={() => console.log("click 2")}>
-                <p className={CN("text")}>Изменить фигуры</p>
-                <ReactSVG src="icon/arrow.svg" className={CN("arrow")} />
-            </Button>
-            <RedButton title={"Назад"} onClick={() => console.log("click 2")} />
-        </div>
+        <MenuLayout>
+            <MenuContext.Provider
+                value={{
+                    onSave: () => {},
+                    goToBack: handleClickCancel,
+                }}>
+                {step === LevelMenu.Default && (
+                    <DefaultSetting itemsMenu={ItemsMenu} />
+                )}
+                {step === LevelMenu.GameSetting && (
+                    <MenuContent
+                        onClickCancel={handleClickCancel}
+                        onSave={handleClickSave}
+                    />
+                )}
+                {step === LevelMenu.EditShapes && <ShapesSetting />}
+            </MenuContext.Provider>
+        </MenuLayout>
     );
 }

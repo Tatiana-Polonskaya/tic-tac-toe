@@ -14,7 +14,7 @@ import {
 } from "../../store/type-game";
 import { Theme } from "../../consts/theme";
 import { useTheme } from "../../hook/useTheme";
-import { ReactSVG } from "react-svg";
+
 import { TypeButton } from "../../consts/type-button";
 
 type Props = {
@@ -88,10 +88,7 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
     ];
 
     return (
-        <div className={CN()}>
-            <div className={CN("logo")}>
-                <ReactSVG src={"./logo.svg"} className={CN("logo-img")} />
-            </div>
+        <>
             <div className={CN("table")}>
                 <TableCell
                     title={"Уровень сложности:"}
@@ -113,6 +110,6 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
                 />
             </div>
             <ButtonRowGroup buttons={buttons} />
-        </div>
+        </>
     );
 }

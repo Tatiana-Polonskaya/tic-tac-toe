@@ -1,4 +1,4 @@
-.Setting {
+.DefaultSetting {
     display: flex;
     flex-flow: column nowrap;
     gap: 20px;
@@ -10,7 +10,7 @@
         justify-content: space-between;
         align-items: center;
         background: var(--background);
-        border: 1 solid var(--border-cell);
+        border: 1px solid var(--border-cell);
         color: var(--text-primary);
         border-radius: 15px;
     }

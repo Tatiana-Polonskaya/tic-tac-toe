@@ -43,7 +43,7 @@ export default function ListWithArrows({ titles, initialNumber, setChoosenNumber
                 style={{ transform: `translateX(-${slide * 100}%)` }}>
                 {titles.map((title, index) => (
                     <div key={index} className={CN("slider-slide")}>
-                        {title}{" "}
+                        {title}
                     </div>
                 ))}
             </div>

@@ -1,0 +1,25 @@
+.MenuLayout {
+    min-width: 600px;
+
+    &-logo {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+
+        &-img {
+            color: var(--text-primary)
+        }
+
+    }
+}
+
+@media (width <=700px) {
+    .MenuContent {
+        min-width: 250px;
+
+        &-table {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
