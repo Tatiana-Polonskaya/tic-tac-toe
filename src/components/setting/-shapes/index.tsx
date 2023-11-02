@@ -11,7 +11,7 @@ import { SHAPES } from "../../../consts/labels";
 
 import { MenuContext } from "../context";
 
-import TableCell from "../../menu-content/-table-cell";
+import TableCell from "../-table-cell";
 import ButtonRowGroup, { ButtonContent } from "../../button-row-group";
 
 import "./style.scss";

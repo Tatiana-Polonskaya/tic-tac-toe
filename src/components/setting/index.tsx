@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import DefaultSetting from "./-default";
-import MenuContent from "../menu-content";
+import GameSetting from "./-game";
 import { MenuContext } from "./context";
 import ShapesSetting from "./-shapes";
 import MenuLayout from "../../layout/menu";
@@ -54,7 +54,7 @@ export default function Setting({ onSave }: Props) {
                 {step === LevelMenu.Default && (
                     <DefaultSetting itemsMenu={ItemsMenu} />
                 )}
-                {step === LevelMenu.GameSetting && <MenuContent />}
+                {step === LevelMenu.GameSetting && <GameSetting />}
                 {step === LevelMenu.EditShapes && <ShapesSetting />}
             </MenuContext.Provider>
         </MenuLayout>

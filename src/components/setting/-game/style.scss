@@ -1,4 +1,4 @@
-.MenuContent {
+.GameSetting {
     min-width: 600px;
 
     &-logo {
@@ -35,8 +35,8 @@
 
 }
 
-@media (width <= 700px) {
-    .MenuContent {
+@media (width <=700px) {
+    .GameSetting {
         min-width: 250px;
 
         &-table {

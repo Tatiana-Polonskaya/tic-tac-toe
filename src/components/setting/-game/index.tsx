@@ -3,29 +3,24 @@ import { useContext, useState } from "react";
 
 import { cn } from "@bem-react/classname";
 
-import ButtonRowGroup, { ButtonContent } from "../button-row-group";
 
-import { RootState } from "../../store/store";
-import { GAME_TYPES } from "../../consts/type-game";
 
-import { COUNT_PLAYERS } from "../../consts/players";
-import TableCell from "./-table-cell";
-import {
-    changeCountPlayers,
-    changeTheme,
-    changeTypeGame,
-} from "../../store/type-game";
-import { Theme } from "../../consts/theme";
-import { useTheme } from "../../hook/useTheme";
-
-import { TypeButton } from "../../consts/type-button";
-import { MenuContext } from "../setting/context";
 
 import "./style.scss";
+import { useTheme } from "../../../hook/useTheme";
+import { MenuContext } from "../context";
+import { RootState } from "../../../store/store";
+import { COUNT_PLAYERS } from "../../../consts/players";
+import { GAME_TYPES } from "../../../consts/type-game";
+import { Theme } from "../../../consts/theme";
+import { changeCountPlayers, changeTheme, changeTypeGame } from "../../../store/type-game";
+import ButtonRowGroup, { ButtonContent } from "../../button-row-group";
+import { TypeButton } from "../../../consts/type-button";
+import TableCell from "../-table-cell";
 
-const CN = cn("MenuContent");
+const CN = cn("GameSetting");
 
-export default function MenuContent() {
+export default function GameSetting() {
     const dispatch = useDispatch();
     const [updateTheme] = useTheme();
 
