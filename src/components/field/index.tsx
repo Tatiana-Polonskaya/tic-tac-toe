@@ -9,7 +9,7 @@ import { PlayerContext } from "../../pages/main/context";
 
 import { Labels } from "../../consts/labels";
 import { GameStatus } from "../../consts/game-status";
-import { PLAYERS } from "../../consts/players";
+
 import { havingWinner, havingEmptyCell } from "../../consts/check-winner";
 
 import "./style.scss";
@@ -33,6 +33,9 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
     const [isError, setIsError] = useState(false);
 
     /* ------------------------ PLAYER ------------------------ */
+    const storePlayers = useSelector(
+        (state: RootState) => state.player.players
+    );
     const { currentPlayer, changePlayer } = useContext(PlayerContext);
 
     /* ------------------------ CELLS ------------------------ */
@@ -105,7 +108,7 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
                     <MemoCell
                         key={i}
                         onClick={() => handleCellClick(i)}
-                        player={PLAYERS[el]}
+                        player={storePlayers[el]}
                     />
                 ))}
             </div>

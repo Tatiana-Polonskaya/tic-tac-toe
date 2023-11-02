@@ -9,7 +9,7 @@ type Props = {
     initialNumber: number;
     title: string;
     choices: string[];
-    onChangeValue: (value: number) => void;
+    onChangeValue: (value: number, initialNumber: number) => void;
 };
 
 const CN = cn("TableCell");
@@ -25,7 +25,7 @@ export default function TableCell({
     const handleChangeValue = (value: number) => {
         setCurrentValue(value);
         if (value !== initialNumber) {
-            onChangeValue(value);
+            onChangeValue(value, initialNumber);
         }
     };
 

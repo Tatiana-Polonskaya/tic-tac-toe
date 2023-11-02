@@ -1,24 +1,47 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { cn } from "@bem-react/classname";
 
+import { RootState } from "../../../store/store";
 import { TypeButton } from "../../../consts/type-button";
-
-import { PLAYERS } from "../../../consts/players";
 
 import { MenuContext } from "../context";
 import TableCell from "../../menu-content/-table-cell";
 import ButtonRowGroup, { ButtonContent } from "../../button-row-group";
+import { SHAPES } from "../../../consts/labels";
 
 import "./style.scss";
-import { SHAPES } from "../../../consts/labels";
+import { changePlayers } from "../../../store/player";
 
 const CN = cn("ShapesSetting");
 
 export default function ShapesSetting() {
-    const { goToBack } = useContext(MenuContext);
+    /** --------------------------- CONST --------------------------- */
+    const dispatch = useDispatch();
+    const { onSave, goToBack } = useContext(MenuContext);
 
+    const storePlayer = useSelector((state: RootState) => state.player.players);
+
+    /** --------------------------- LABELS --------------------------- */
+
+    const [players, setPlayers] = useState(storePlayer);
+
+    const changeLabel = (indexShape: number, indexPlayer: number) => {
+        console.log("player id: ", indexPlayer, "change: ", SHAPES[indexShape]);
+
+        const tempArr = [...players];
+
+        const temp = { ...tempArr[indexPlayer] };
+        temp.label = SHAPES[indexShape];
+        tempArr[indexPlayer] = temp;
+        setPlayers(tempArr);
+    };
+
+    /** --------------------------- BUTTON --------------------------- */
     const handleClicksave = () => {
-        goToBack();
+        dispatch(changePlayers(players));
+        onSave();
     };
     const buttons: ButtonContent[] = [
         {
@@ -35,18 +58,15 @@ export default function ShapesSetting() {
         },
     ];
 
-    const changeLabel = (index: number) => {
-        console.log("change: ", SHAPES[index]);
-    };
-
     return (
         <div className={CN()}>
             <div className={CN("table")}>
-                {PLAYERS.map((player) => (
+                {storePlayer.map((player) => (
                     <TableCell
+                        key={player.id}
                         title={`Игрок ${player.id + 1}:`}
                         choices={SHAPES.map((el) => el.title)}
-                        initialNumber={player.label.id - 1}
+                        initialNumber={player.id}
                         onChangeValue={changeLabel}
                     />
                 ))}
