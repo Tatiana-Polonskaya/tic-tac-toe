@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import DefaultSetting from "./-default";
 import MenuContent from "../menu-content";
 import { MenuContext } from "./context";
@@ -11,7 +12,11 @@ enum LevelMenu {
     EditShapes = 2,
 }
 
-export default function Setting() {
+type Props = {
+    onSave: () => void;
+};
+
+export default function Setting({ onSave }: Props) {
     const [step, setStep] = useState(LevelMenu.Default);
 
     const changeLevelToGameSetting = () => {
@@ -23,10 +28,6 @@ export default function Setting() {
     };
 
     const handleClickCancel = () => {
-        setStep(LevelMenu.Default);
-    };
-
-    const handleClickSave = () => {
         setStep(LevelMenu.Default);
     };
 
@@ -47,18 +48,13 @@ export default function Setting() {
         <MenuLayout>
             <MenuContext.Provider
                 value={{
-                    onSave: () => {},
+                    onSave: onSave,
                     goToBack: handleClickCancel,
                 }}>
                 {step === LevelMenu.Default && (
                     <DefaultSetting itemsMenu={ItemsMenu} />
                 )}
-                {step === LevelMenu.GameSetting && (
-                    <MenuContent
-                        onClickCancel={handleClickCancel}
-                        onSave={handleClickSave}
-                    />
-                )}
+                {step === LevelMenu.GameSetting && <MenuContent />}
                 {step === LevelMenu.EditShapes && <ShapesSetting />}
             </MenuContext.Provider>
         </MenuLayout>

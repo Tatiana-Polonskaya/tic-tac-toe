@@ -1,10 +1,13 @@
-import { cn } from "@bem-react/classname";
-import "./style.scss";
-import ButtonRowGroup, { ButtonContent } from "../button-row-group";
 import { useDispatch, useSelector } from "react-redux";
+import { useContext, useState } from "react";
+
+import { cn } from "@bem-react/classname";
+
+import ButtonRowGroup, { ButtonContent } from "../button-row-group";
+
 import { RootState } from "../../store/store";
 import { GAME_TYPES } from "../../consts/type-game";
-import { useState } from "react";
+
 import { COUNT_PLAYERS } from "../../consts/players";
 import TableCell from "./-table-cell";
 import {
@@ -16,17 +19,17 @@ import { Theme } from "../../consts/theme";
 import { useTheme } from "../../hook/useTheme";
 
 import { TypeButton } from "../../consts/type-button";
+import { MenuContext } from "../setting/context";
 
-type Props = {
-    onClickCancel: () => void;
-    onSave: () => void;
-};
+import "./style.scss";
 
 const CN = cn("MenuContent");
 
-export default function MenuContent({ onClickCancel, onSave }: Props) {
+export default function MenuContent() {
     const dispatch = useDispatch();
     const [updateTheme] = useTheme();
+
+    const { onSave, goToBack } = useContext(MenuContext);
 
     /* ----------------------- COMPLEXITY GAME ----------------------- */
     const storeGame = useSelector((state: RootState) => state.game.typeGame);
@@ -77,7 +80,7 @@ export default function MenuContent({ onClickCancel, onSave }: Props) {
             id: 0,
             title: "Отмена",
             typeButton: TypeButton.Red,
-            onClick: onClickCancel,
+            onClick: goToBack,
         },
         {
             id: 1,

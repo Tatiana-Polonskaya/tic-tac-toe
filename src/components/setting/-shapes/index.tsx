@@ -63,19 +63,17 @@ export default function ShapesSetting() {
 
     return (
         <div className={CN()}>
-            <div>
-                <div className={CN("table")}>
-                    {PLAYERS.map((player) => (
-                        <TableCell
-                            title={`Игрок ${player.id + 1}:`}
-                            choices={SHAPES.map((el) => el.title)}
-                            initialNumber={player.label - 1}
-                            onChangeValue={changeLabel}
-                        />
-                    ))}
-                </div>
-                <ButtonRowGroup buttons={buttons} />
+            <div className={CN("table")}>
+                {PLAYERS.map((player) => (
+                    <TableCell
+                        title={`Игрок ${player.id + 1}:`}
+                        choices={SHAPES.map((el) => el.title)}
+                        initialNumber={player.label - 1}
+                        onChangeValue={changeLabel}
+                    />
+                ))}
             </div>
+            <ButtonRowGroup buttons={buttons} />
         </div>
     );
 }

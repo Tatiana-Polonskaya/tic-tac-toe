@@ -7,7 +7,7 @@ import ModalWindow from "../../components/modal-window";
 
 import { GameStatus } from "../../consts/game-status";
 import WinDrawMessage from "../../components/win-draw-message";
-import MenuContent from "../../components/menu-content";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
@@ -121,11 +121,7 @@ export default function MainPage() {
                 isVisible={isMenuModal}
                 onClose={handleCloseMenu}
                 closeOnClickOutside={true}>
-                <Setting />
-                <MenuContent
-                    onClickCancel={handleCloseMenu}
-                    onSave={handleSaveMenu}
-                />
+                <Setting onSave={handleSaveMenu} />
             </ModalWindow>
         </div>
     );
