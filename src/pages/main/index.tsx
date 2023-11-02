@@ -123,7 +123,7 @@ export default function MainPage() {
                 isVisible={isMenuModal}
                 onClose={handleCloseMenu}
                 closeOnClickOutside={true}>
-                <Setting onSave={handleSaveMenu} />
+                <Setting onSave={handleSaveMenu} onClose={handleCloseMenu} />
             </ModalWindow>
         </div>
     );

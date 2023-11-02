@@ -14,9 +14,10 @@ enum LevelMenu {
 
 type Props = {
     onSave: () => void;
+    onClose: () => void;
 };
 
-export default function Setting({ onSave }: Props) {
+export default function Setting({ onSave, onClose }: Props) {
     const [step, setStep] = useState(LevelMenu.Default);
 
     const changeLevelToGameSetting = () => {
@@ -52,7 +53,7 @@ export default function Setting({ onSave }: Props) {
                     goToBack: handleClickCancel,
                 }}>
                 {step === LevelMenu.Default && (
-                    <DefaultSetting itemsMenu={ItemsMenu} />
+                    <DefaultSetting itemsMenu={ItemsMenu} onClose={onClose}/>
                 )}
                 {step === LevelMenu.GameSetting && <GameSetting />}
                 {step === LevelMenu.EditShapes && <ShapesSetting />}

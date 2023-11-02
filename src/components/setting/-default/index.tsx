@@ -1,10 +1,8 @@
 import { cn } from "@bem-react/classname";
 import { ReactSVG } from "react-svg";
-import { useContext } from "react";
 
 import Button from "../../button";
 import { RedButton } from "../../proxy-button";
-import { MenuContext } from "../context";
 
 import "./style.scss";
 
@@ -18,10 +16,10 @@ export type ItemMenu = {
 
 type Props = {
     itemsMenu: ItemMenu[];
+    onClose: () => void;
 };
 
-export default function DefaultSetting({ itemsMenu }: Props) {
-    const { goToBack } = useContext(MenuContext);
+export default function DefaultSetting({ itemsMenu, onClose }: Props) {
     return (
         <div className={CN()}>
             {itemsMenu.map((item) => (
@@ -33,7 +31,7 @@ export default function DefaultSetting({ itemsMenu }: Props) {
                     <ReactSVG src="icon/arrow.svg" className={CN("arrow")} />
                 </Button>
             ))}
-            <RedButton title={"Назад"} onClick={goToBack} />
+            <RedButton title={"Отмена"} onClick={onClose} />
         </div>
     );
 }
