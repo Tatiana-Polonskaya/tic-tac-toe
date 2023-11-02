@@ -30,10 +30,7 @@ export default function ShapesSetting() {
     const [players, setPlayers] = useState(storePlayer);
 
     const changeLabel = (indexShape: number, indexPlayer?: number) => {
-
         if (indexPlayer !== undefined) {
-            console.log("indexShape", indexShape, SHAPES[indexShape]);
-            console.log("indexPlayer", indexPlayer);
             const tempArr = [...players];
             const temp = { ...tempArr[indexPlayer] };
             temp.label = SHAPES[indexShape];
