@@ -1,22 +1,22 @@
 import { IPlayer } from "../models/players";
-import { Labels } from "./labels";
+import { SHAPES } from "./labels";
 
 export const PLAYERS: IPlayer[] = [
     {
         id: 0,
-        label: Labels.Cross,
+        label: SHAPES[0],
     },
     {
         id: 1,
-        label: Labels.Circle,
+        label: SHAPES[1],
     },
     {
         id: 2,
-        label: Labels.Triangle,
+        label: SHAPES[2],
     },
     {
         id: 3,
-        label: Labels.Square,
+        label: SHAPES[3],
     },
 ];
 

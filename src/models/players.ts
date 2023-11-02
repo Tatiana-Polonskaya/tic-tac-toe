@@ -1,6 +1,6 @@
-import { Labels } from "../consts/labels";
+import { Shape } from "../consts/labels";
 
 export interface IPlayer {
     id: number;
-    label: Labels;
+    label: Shape;
 }

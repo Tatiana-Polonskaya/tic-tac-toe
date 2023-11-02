@@ -1,6 +1,8 @@
-import ListWithArrows from "../../list-with-arrows";
 import { useState } from "react";
 import { cn } from "@bem-react/classname";
+
+import ListWithArrows from "../../list-with-arrows";
+
 import "./style.scss";
 
 type Props = {

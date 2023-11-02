@@ -1,14 +1,18 @@
-import MemoCell from "../cell";
-import { cn } from "@bem-react/classname";
-import "./style.scss";
 import { useContext, useEffect, useState } from "react";
-import { havingWinner, havingEmptyCell } from "../../consts/check-winner";
+import { useSelector } from "react-redux";
+import { cn } from "@bem-react/classname";
+
+import { RootState } from "../../store/store";
+
+import MemoCell from "../cell";
+import { PlayerContext } from "../../pages/main/context";
+
 import { Labels } from "../../consts/labels";
 import { GameStatus } from "../../consts/game-status";
-import { PlayerContext } from "../../pages/main/context";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import { PLAYERS } from "../../consts/players";
+import { havingWinner, havingEmptyCell } from "../../consts/check-winner";
+
+import "./style.scss";
 
 type Props = {
     gameStatus: GameStatus;
@@ -18,33 +22,41 @@ type Props = {
 const CN = cn("Field");
 
 export default function Field({ gameStatus, changeGameStatus }: Props) {
+    //
+    /* ------------------------ COUNT ROW AND COL ------------------------ */
     const countRowCol = useSelector(
         (state: RootState) => state.game.typeGame
     ).mapSize;
 
+    /* ------------------------ ERROR MESSAGE ------------------------ */
+
     const [isError, setIsError] = useState(false);
 
-    const { indexPlayer: currentPlayer, changePlayer } =
-        useContext(PlayerContext);
+    /* ------------------------ PLAYER ------------------------ */
+    const { currentPlayer, changePlayer } = useContext(PlayerContext);
 
+    /* ------------------------ CELLS ------------------------ */
     const [cells, setCells] = useState<number[]>([]);
+
+    const clearCells = () => {
+        setCells([...new Array(countRowCol ** 2).fill(-1)]);
+    };
 
     useEffect(() => {
         if (cells.length !== countRowCol ** 2) {
-            setCells([...new Array(countRowCol ** 2).fill(0)]);
+            clearCells();
         }
     }, [countRowCol]);
 
     const updateCells = (id: number) => {
         const temp = [...cells];
-        let res = true;
+
         if (temp[id] === Labels.Empty) {
-            temp[id] = PLAYERS[currentPlayer].label;
+            temp[id] = currentPlayer.id;
             setCells(temp);
-        } else {
-            res = false;
+            return true;
         }
-        return res;
+        return false;
     };
 
     const handleCellClick = (id: number) => {
@@ -58,7 +70,7 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
     useEffect(() => {
         if (gameStatus !== GameStatus.Start) {
             const checking = havingWinner(
-                currentPlayer + 1,
+                currentPlayer.label.id,
                 cells,
                 countRowCol
             );
@@ -76,7 +88,7 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
 
     useEffect(() => {
         if (gameStatus === GameStatus.Start) {
-            setCells([...new Array(countRowCol ** 2).fill(0)]);
+            clearCells();
             setIsError(false);
         }
     }, [gameStatus]);
@@ -92,9 +104,8 @@ export default function Field({ gameStatus, changeGameStatus }: Props) {
                 {cells.map((el, i) => (
                     <MemoCell
                         key={i}
-                        id={i}
-                        onClick={handleCellClick}
-                        type={el}
+                        onClick={() => handleCellClick(i)}
+                        player={PLAYERS[el]}
                     />
                 ))}
             </div>

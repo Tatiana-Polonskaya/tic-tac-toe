@@ -1,6 +1,7 @@
 import { createContext } from "react";
+import { PLAYERS } from "../../consts/players";
 
 export const PlayerContext = createContext({
-    indexPlayer: 0,
+    currentPlayer: PLAYERS[0],
     changePlayer: () => {},
 });

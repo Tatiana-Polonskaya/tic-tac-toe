@@ -14,6 +14,7 @@ import { RootState } from "../../store/store";
 import { ReactSVG } from "react-svg";
 import { PlayerContext } from "./context";
 import Setting from "../../components/setting";
+import { PLAYERS } from "../../consts/players";
 
 const CN = cn("MainPage");
 
@@ -90,7 +91,8 @@ export default function MainPage() {
                 </Button>
             </div>
 
-            <PlayerContext.Provider value={{ indexPlayer, changePlayer }}>
+            <PlayerContext.Provider
+                value={{ currentPlayer: PLAYERS[indexPlayer], changePlayer }}>
                 <div className={CN("grow")}>
                     <h1
                         className={CN(
