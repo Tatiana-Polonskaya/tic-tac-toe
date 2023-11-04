@@ -12,8 +12,13 @@
         color: var(--text-primary);
 
         background: var(--background);
-        // border: 1px solid var(--border-cell);
         border-radius: 15px;
+
+        &:hover {
+            color: var(--text-secondary);
+            background-color: var(--button-blue);
+            transition: 1s;
+        }
     }
 
 

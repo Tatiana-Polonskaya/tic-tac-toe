@@ -1,10 +1,12 @@
 import { useState } from "react";
 
+import MenuLayout from "../../layout/menu";
+import { MenuContext } from "./context";
+
 import DefaultSetting from "./-default";
 import GameSetting from "./-game";
-import { MenuContext } from "./context";
 import ShapesSetting from "./-shapes";
-import MenuLayout from "../../layout/menu";
+
 
 enum LevelMenu {
     Default = 0,
