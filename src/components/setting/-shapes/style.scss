@@ -1,7 +1,7 @@
 .ShapesSetting {
     &-table {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-flow: column nowrap;
         gap: 10px;
         justify-items: center;
 
@@ -13,9 +13,6 @@
     .ShapesSetting {
         min-width: 250px;
 
-        &-table {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-        }
+
     }
 }

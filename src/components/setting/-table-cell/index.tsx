@@ -34,7 +34,7 @@ export default function TableCell({
     };
 
     return (
-        <>
+        <div className={CN("row")}>
             <div className={CN("cell")}>{title}</div>
             <div
                 className={CN("cell", {
@@ -46,6 +46,6 @@ export default function TableCell({
                     setChoosenNumber={handleChangeValue}
                 />
             </div>
-        </>
+        </div>
     );
 }

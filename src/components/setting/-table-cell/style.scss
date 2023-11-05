@@ -1,7 +1,15 @@
 .TableCell {
+
+    &-row {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 600px;
+    }
+
     &-cell {
-        width: 100%;
+        width: 50%;
         padding: 10px 0;
+        flex-grow: 1;
 
         color: var(--text-primary);
         text-align: center;
@@ -11,5 +19,22 @@
         &_border {
             background-color: var(--background-table-cell);
         }
+    }
+}
+
+@media (width <=700px) {
+    .TableCell {
+
+        &-row {
+            min-width: 250px;
+            flex-flow: column nowrap;
+
+            &-cell {
+                width: 100%;
+            }
+        }
+
+
+
     }
 }
