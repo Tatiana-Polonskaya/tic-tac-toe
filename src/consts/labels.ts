@@ -4,6 +4,10 @@ export enum Labels {
     Circle = 1,
     Triangle = 2,
     Square = 3,
+    Planet = 4,
+    Moon = 5,
+    Nlo = 6,
+    Star = 7,
 }
 
 export type Shape = {
@@ -32,5 +36,25 @@ export const SHAPES: Shape[] = [
         id: Labels.Square,
         title: "Квадрат",
         link: "shapes/rectangle.svg",
+    },
+    {
+        id: Labels.Square,
+        title: "Планета",
+        link: "shapes/planet.svg",
+    },
+    {
+        id: Labels.Moon,
+        title: "Луна",
+        link: "shapes/moon.svg",
+    },
+    {
+        id: Labels.Nlo,
+        title: "НЛО",
+        link: "shapes/nlo.svg",
+    },
+    {
+        id: Labels.Star,
+        title: "Звезда",
+        link: "shapes/star.svg",
     },
 ];
