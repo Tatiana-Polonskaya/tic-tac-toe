@@ -21,4 +21,9 @@ export const Theme: ThemeObject[] = [
         mode: ThemeMode.Dark,
         title: "Темная",
     },
+    {
+        id: 2,
+        mode: ThemeMode.Cosmos,
+        title: "Космос",
+    },
 ];
