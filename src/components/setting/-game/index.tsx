@@ -3,9 +3,6 @@ import { useContext, useState } from "react";
 
 import { cn } from "@bem-react/classname";
 
-
-
-
 import "./style.scss";
 import { useTheme } from "../../../hook/useTheme";
 import { MenuContext } from "../context";
@@ -13,7 +10,11 @@ import { RootState } from "../../../store/store";
 import { COUNT_PLAYERS } from "../../../consts/players";
 import { GAME_TYPES } from "../../../consts/type-game";
 import { Theme } from "../../../consts/theme";
-import { changeCountPlayers, changeTheme, changeTypeGame } from "../../../store/type-game";
+import {
+    changeCountPlayers,
+    changeTheme,
+    changeTypeGame,
+} from "../../../store/type-game";
 import ButtonRowGroup, { ButtonContent } from "../../button-row-group";
 import { TypeButton } from "../../../consts/type-button";
 import TableCell from "../-table-cell";
@@ -73,7 +74,7 @@ export default function GameSetting() {
     const buttons: ButtonContent[] = [
         {
             id: 0,
-            title: "Отмена",
+            title: "Назад",
             typeButton: TypeButton.Red,
             onClick: goToBack,
         },

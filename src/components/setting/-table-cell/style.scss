@@ -26,15 +26,12 @@
     .TableCell {
 
         &-row {
-            min-width: 250px;
+            width: 250px;
             flex-flow: column nowrap;
-
-            &-cell {
-                width: 100%;
-            }
         }
 
-
-
+        &-cell {
+            width: 100%;
+        }
     }
 }
