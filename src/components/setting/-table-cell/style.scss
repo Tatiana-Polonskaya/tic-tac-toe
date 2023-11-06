@@ -1,5 +1,4 @@
 .TableCell {
-
     &-row {
         display: flex;
         flex-flow: row nowrap;
@@ -7,9 +6,10 @@
     }
 
     &-cell {
+        flex-grow: 1;
+
         width: 50%;
         padding: 10px 0;
-        flex-grow: 1;
 
         color: var(--text-primary);
         text-align: center;
@@ -24,10 +24,9 @@
 
 @media (width <=700px) {
     .TableCell {
-
         &-row {
-            width: 250px;
             flex-flow: column nowrap;
+            width: 250px;
         }
 
         &-cell {
