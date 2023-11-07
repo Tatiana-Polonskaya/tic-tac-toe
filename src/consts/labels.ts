@@ -9,6 +9,12 @@ export enum Labels {
     Nlo = 6,
     Star = 7,
 }
+export const CosmosIndexLabels = [
+    Labels.Planet,
+    Labels.Moon,
+    Labels.Nlo,
+    Labels.Star,
+];
 
 export type Shape = {
     id: number;
@@ -38,7 +44,7 @@ export const SHAPES: Shape[] = [
         link: "shapes/rectangle.svg",
     },
     {
-        id: Labels.Square,
+        id: Labels.Planet,
         title: "Планета",
         link: "shapes/planet.svg",
     },
@@ -58,3 +64,7 @@ export const SHAPES: Shape[] = [
         link: "shapes/star.svg",
     },
 ];
+
+export function getShapeById(id: Labels) {
+    return SHAPES.filter((el) => el.id === id)[0];
+}

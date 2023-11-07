@@ -9,7 +9,7 @@ import { MenuContext } from "../context";
 import { RootState } from "../../../store/store";
 import { COUNT_PLAYERS } from "../../../consts/players";
 import { GAME_TYPES } from "../../../consts/type-game";
-import { Theme } from "../../../consts/theme";
+import { Theme, ThemeMode } from "../../../consts/theme";
 import {
     changeCountPlayers,
     changeTheme,
@@ -18,6 +18,8 @@ import {
 import ButtonRowGroup, { ButtonContent } from "../../button-row-group";
 import { TypeButton } from "../../../consts/type-button";
 import TableCell from "../-table-cell";
+import { changePlayers } from "../../../store/player";
+import { CosmosIndexLabels, getShapeById } from "../../../consts/labels";
 
 const CN = cn("GameSetting");
 
@@ -62,12 +64,21 @@ export default function GameSetting() {
         setMenuState({ ...menuState, theme: Theme[index] });
     };
 
+    const storePlayer = useSelector((state: RootState) => state.player.players);
+
+    /** --------------------------- LABELS --------------------------- */
+
     const handleClicksave = () => {
         dispatch(changeTypeGame(menuState.complexity));
         dispatch(changeCountPlayers(menuState.countPlayers));
         dispatch(changeTheme(menuState.theme));
+        if (menuState.theme.mode === ThemeMode.Cosmos) {
+            const tempArr = storePlayer.map((el, i) => {
+                return { ...el, label: getShapeById(CosmosIndexLabels[i]) };
+            });
+            dispatch(changePlayers(tempArr));
+        }
         updateTheme(menuState.theme.mode);
-
         onSave();
     };
 

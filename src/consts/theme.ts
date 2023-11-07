@@ -1,7 +1,7 @@
 export enum ThemeMode {
     Dark = "dark",
     Light = "light",
-    Cosmos = "cosmoc",
+    Cosmos = "cosmos",
 }
 
 export type ThemeObject = {
