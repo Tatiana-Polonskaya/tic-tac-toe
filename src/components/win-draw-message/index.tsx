@@ -30,8 +30,6 @@ export default function WinDrawMessage({
         </span>
     );
 
-    const background = isWin ? `url("./win-background.png")` : "";
-
     const buttons: ButtonContent[] = [
         {
             id: 0,
@@ -48,7 +46,7 @@ export default function WinDrawMessage({
     ];
 
     return (
-        <div className={CN()} style={{ backgroundImage: background }}>
+        <div className={CN({ background: isWin })}>
             <div className={CN("title")}>
                 {isWin ? messageWin : messageDraw}
             </div>

@@ -20,6 +20,8 @@
     --background-player-2: linear-gradient(180deg, #64EA4E 0%, rgb(100 234 78 / 0%) 100%);
     --color-player-3: #EADA4E;
     --background-player-3: linear-gradient(0deg, #EADA4E 0%, rgb(234 218 78 / 0%) 100%);
+
+    --win-background: url("/win-background.png");
 }
 
 [data-theme="dark"] {
@@ -44,6 +46,8 @@
     --background-player-2: linear-gradient(180deg, #59A74D 0.25%, #000 99.74%);
     --color-player-3: #FFF27B;
     --background-player-3: linear-gradient(0deg, #C4B52F 0%, #000 100%);
+
+    --win-background: url("/win-background.png");
 }
 
 [data-theme="cosmos"] {
@@ -68,4 +72,6 @@
     --background-player-2: url("/background/green-planet.png");
     --color-player-3: #FFF27B;
     --background-player-3: url("/background/yellow-planet.png");
+
+    --win-background: url("/cosmos-win-background.png");
 }
