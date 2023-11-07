@@ -61,11 +61,11 @@
     --text-primary: #FFF;
     --text-secondary: #FFF;
     --color-player-0: #FF7979;
-    --background-player-0: linear-gradient(90deg, #9B2D2D 0.12%, #000 99.87%);
+    --background-player-0: url("/background/red-planet.png");
     --color-player-1: #9483FF;
-    --background-player-1: linear-gradient(270deg, #614BE5 0.21%, #000 99.72%);
+    --background-player-1: url("/background/blue-planet.png");
     --color-player-2: #91FF7F;
-    --background-player-2: linear-gradient(180deg, #59A74D 0.25%, #000 99.74%);
+    --background-player-2: url("/background/green-planet.png");
     --color-player-3: #FFF27B;
-    --background-player-3: linear-gradient(0deg, #C4B52F 0%, #000 100%);
+    --background-player-3: url("/background/yellow-planet.png");
 }

@@ -9,6 +9,8 @@
         overflow: auto;
         flex-flow: column nowrap;
         height: 100%;
+
+        
     }
 
     &-row {
@@ -45,7 +47,7 @@
     }
 }
 
-@media (width <= 400px) {
+@media (width <=400px) {
     .MainPage {
         &-grow {
             gap: 0;
