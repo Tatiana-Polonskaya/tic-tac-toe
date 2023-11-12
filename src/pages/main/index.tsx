@@ -1,20 +1,23 @@
 import { useCallback, useEffect, useState } from "react";
-import Field from "../../components/field";
-import { cn } from "@bem-react/classname";
-import "./style.scss";
-import Button from "../../components/button";
-import ModalWindow from "../../components/modal-window";
-
-import { GameStatus } from "../../consts/game-status";
-import WinDrawMessage from "../../components/win-draw-message";
-
 import { useSelector } from "react-redux";
+import { ReactSVG } from "react-svg";
+
 import { RootState } from "../../store/store";
 
-import { ReactSVG } from "react-svg";
-import { PlayerContext } from "./context";
+import { cn } from "@bem-react/classname";
+
+import Button from "../../components/button";
+import Field from "../../components/field";
+import ModalWindow from "../../components/modal-window";
 import Setting from "../../components/setting";
+import WinDrawMessage from "../../components/win-draw-message";
+
+import { GameStatus } from "../../consts/game-status";
 import { PLAYERS } from "../../consts/players";
+
+import { PlayerContext } from "./context";
+
+import "./style.scss";
 
 const CN = cn("MainPage");
 
@@ -34,24 +37,24 @@ export default function MainPage() {
 
     const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.Start);
 
-    const updateGameStatus = (status: GameStatus) => {
+    const updateGameStatus = useCallback((status: GameStatus) => {
         setGameStatus(status);
-    };
+    }, []);
 
     const handleResetClick = useCallback(() => {
         updateGameStatus(GameStatus.Start);
         setIndexPlayer(0);
-    }, []);
+    }, [updateGameStatus]);
 
     /* ------------------------ MODAL ------------------------ */
 
-    const [isModal, setIsModal] = useState(false);
+    const [isWinDrawModal, setIsWinDrawModal] = useState(false);
     const [isMenuModal, setIsMenuModal] = useState(false);
 
     const handleShowMenuModal = () => setIsMenuModal(true);
 
     const handleClose = () => {
-        setIsModal(false);
+        setIsWinDrawModal(false);
     };
 
     const handleCloseMenu = () => {
@@ -75,7 +78,7 @@ export default function MainPage() {
 
     useEffect(() => {
         if (gameStatus === GameStatus.Win || gameStatus === GameStatus.Draw)
-            setIsModal(true);
+            setIsWinDrawModal(true);
     }, [gameStatus]);
 
     return (
@@ -109,7 +112,7 @@ export default function MainPage() {
             </PlayerContext.Provider>
 
             <ModalWindow
-                isVisible={isModal}
+                isVisible={isWinDrawModal}
                 onClose={handleClose}
                 closeOnClickOutside={true}>
                 <WinDrawMessage
