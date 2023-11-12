@@ -16,7 +16,7 @@
 
     &-img {
         width: 100%;
-        padding: 13px 10px 10px;
+        padding: 10px 10px 10px;
 
         div {
             display: flex;
@@ -26,7 +26,7 @@
     }
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     .Cell {
         &-block {
             width: 70px;
@@ -41,7 +41,7 @@
     }
 }
 
-@media (width <= 400px) {
+@media (width <=400px) {
     .Cell {
         &-block {
             width: 100%;
