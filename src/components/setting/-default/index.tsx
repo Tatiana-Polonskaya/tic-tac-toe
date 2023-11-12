@@ -29,6 +29,7 @@ export default function DefaultSetting({ itemsMenu, onClose }: Props) {
                     onClick={item.onClick}>
                     <p className={CN("text")}>{item.title}</p>
                     <ReactSVG src="icon/arrow.svg" className={CN("arrow")} />
+                    <span className={CN("flare")}></span>
                 </Button>
             ))}
             <RedButton title={"Отмена"} onClick={onClose} />
